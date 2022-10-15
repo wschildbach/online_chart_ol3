@@ -4,8 +4,8 @@
   "description": "OpenSeaMap charting framework",
   "license": "AGPL-3.0",
   "engines": {
-    "node": "4",
-    "npm": "3"
+    "node": "5",
+    "npm": "6"
   },
   "homepage": "http://aaxee.github.io/online_chart_ol3",
   "repository": "https://github.com/aAXEe/online_chart_ol3",

@@ -1,11 +1,15 @@
-FROM node:4
+FROM node:8
 
-RUN mkdir -p /app && mkdir -p /home/node && \
-    chown -R node:node /app && \
-        chown -R node:node /home/node
+ENV RUNASUSER=nobody
+ENV RUNASGROUP=nogroup
+ENV OWN=$RUNASUSER:$RUNASGROUP
+RUN cat /etc/passwd /etc/group
+RUN mkdir -p /app && mkdir -p /home/node
+#RUN    chown -R $OWN /app && \
+#        chown -R $OWN /home/node
 WORKDIR /app
 
-USER node
+#USER $RUNASUSER
 COPY *.json /app/
 RUN npm install  --loglevel=warn
 
