@@ -1,7 +1,7 @@
 language: node_js
 node_js:
 - "4"
-- "6"
+- "8"
 env:
   - CXX=g++-4.8
 addons:
@@ -14,8 +14,8 @@ addons:
 before_script:
 - git config --global user.email "travis@openseamap.org"
 - git config --global user.name "TravisCI"
-- git remote rm origin
-- git remote add origin https://aAXEe:${GH_TOKEN}@github.com/aAXEe/online_chart_ol3
+#- git remote rm origin
+#- git remote add origin https://aAXEe:${GH_TOKEN}@github.com/aAXEe/online_chart_ol3
 - export DISABLE_NOTIFIER=true
 
 branches:
