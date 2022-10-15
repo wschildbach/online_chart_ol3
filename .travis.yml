@@ -15,7 +15,7 @@ before_script:
 - git config --global user.email "travis@openseamap.org"
 - git config --global user.name "TravisCI"
 #- git remote rm origin
-#- git remote add origin https://aAXEe:${GH_TOKEN}@github.com/aAXEe/online_chart_ol3
+#- git remote add origin https://wschildbach:${GH_TOKEN}@github.com/wschildbach/online_chart_ol3
 - export DISABLE_NOTIFIER=true
 
 branches:
