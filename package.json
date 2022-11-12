@@ -24,7 +24,10 @@
   "dependencies": {
     "bootstrap-sass": "^3.4.3",
     "fbjs": "^3.0.4",
-    "ol": "^7.1.0"
+    "gulp": "^4.0.2",
+    "ol": "^7.1.0",
+    "react": "^18.2.0",
+    "redux": "^4.2.0"
   },
   "devDependencies": {
     "babel": "^6.23.0",
@@ -37,7 +40,6 @@
     "karma-mocha": "^2.0.1",
     "mocha": "^10.1.0",
     "node-sass": "^8.0.0",
-    "redux-devtools": "^3.7.0",
     "webpack": "^5.75.0"
   }
 }
