@@ -1,20 +1,21 @@
 var config = require('../config')
 
-var gulp = require('gulp')
+const {src} = require('gulp')
+
 var path = require('path')
 var eslint = require('gulp-eslint')
 
 var options = (config.tasks.lint && config.tasks.lint.options) ? config.tasks.lint.options : {}
 
-var lint = function () {
-  return function () {
-    var jsSrc = path.resolve(config.root.src, config.tasks.js.src)
-    return gulp.src(jsSrc + '/**/*.js')
-      .pipe(eslint(options))
-      .pipe(eslint.format())
-      .pipe(eslint.failAfterError())
-  }
+function runLinter(cb) {
+  var jsSrc = path.resolve(config.root.src, config.tasks.js.src);
+  return src([jsSrc + '/**/*.js'])
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError())
+    .on('end',function() {
+      cb();
+    });
 }
 
-gulp.task('lint', lint())
-module.exports = lint
+module.exports = runLinter

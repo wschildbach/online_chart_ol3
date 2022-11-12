@@ -1,6 +1,6 @@
 var config = require('../config')
 var ghPages = require('gulp-gh-pages')
-var gulp = require('gulp')
+const src = require('gulp')
 var os = require('os')
 var packageData = require('../../package.json')
 var path = require('path')
@@ -13,10 +13,12 @@ var settings = {
   }
 }
 
-var deployTask = function () {
-  return gulp.src(settings.src)
+function deploy(cb) {
+  return src(settings.src)
     .pipe(ghPages(settings.ghPages))
+    .on('end', function() {
+      cb();
+    });
 }
 
-gulp.task('deploy', ['production'], deployTask)
-module.exports = deployTask
+module.exports = deploy

@@ -1,6 +1,6 @@
 var config = require('../config')
 var changed = require('gulp-changed')
-var gulp = require('gulp')
+const {src,dest} = require('gulp')
 var path = require('path')
 
 var paths = {
@@ -8,11 +8,13 @@ var paths = {
   dest: path.join(config.root.dest, config.tasks.static.dest)
 }
 
-var staticTask = function () {
-  return gulp.src(paths.src)
+var staticTask = function (cb) {
+  src(paths.src)
     .pipe(changed(paths.dest)) // Ignore unchanged files
-    .pipe(gulp.dest(paths.dest))
+    .pipe(dest(paths.dest))
+    .on('end', function () {
+      cb();
+    });
 }
 
-gulp.task('static', staticTask)
 module.exports = staticTask

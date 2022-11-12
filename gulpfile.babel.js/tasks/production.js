@@ -1,11 +1,13 @@
-var gulp = require('gulp')
-var gulpSequence = require('gulp-sequence')
+const {series} = require('gulp')
+const clean = require('./clean.js')
+const runLinter = require('./lint.js')
 var getEnabledTasks = require('../lib/getEnabledTasks')
 
-var productionTask = function (cb) {
+function productionTask(cb) {
   var tasks = getEnabledTasks('production')
-  gulpSequence('clean', 'lint', tasks.assetTasks, tasks.codeTasks, 'rev', 'static', cb)
+  series('clean', 'lint', tasks.assetTasks, tasks.codeTasks, 'rev', 'static')
+  cb()
 }
 
-gulp.task('production', productionTask)
+module.production = productionTask
 module.exports = productionTask

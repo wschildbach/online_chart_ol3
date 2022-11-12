@@ -1,7 +1,7 @@
 var config = require('../config')
 
 var browserSync = require('browser-sync')
-var gulp = require('gulp')
+var {src,dest} = require('gulp')
 var gulpif = require('gulp-if')
 var handleErrors = require('../lib/handleErrors')
 var htmlmin = require('gulp-htmlmin')
@@ -15,8 +15,8 @@ var paths = {
   dest: path.join(config.root.dest, config.tasks.html.dest)
 }
 
-var htmlTask = function () {
-  return gulp.src(paths.src)
+var htmlTask = function (cb) {
+  return src(paths.src)
     .on('error', handleErrors)
     .pipe(render({
       path: [path.join(config.root.src, config.tasks.html.src)],
@@ -26,9 +26,11 @@ var htmlTask = function () {
     }))
     .on('error', handleErrors)
     .pipe(gulpif(process.env.NODE_ENV === 'production', htmlmin(config.tasks.html.htmlmin)))
-    .pipe(gulp.dest(paths.dest))
+    .pipe(dest(paths.dest))
     .pipe(browserSync.stream())
+    .on('end', function () {
+      cb();
+    });
 }
 
-gulp.task('html', htmlTask)
 module.exports = htmlTask

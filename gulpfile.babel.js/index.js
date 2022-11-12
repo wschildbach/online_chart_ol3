@@ -11,7 +11,35 @@
   when you run `gulp`.
 */
 
-var requireDir = require('require-dir')
+const { src, dest, series } = require("gulp");
+//var requireDir = require('require-dir')
 
 // Require all tasks in gulpfile.js/tasks, including subfolders
-requireDir('./tasks', { recurse: true })
+//requireDir('./tasks', { recurse: true })
+const production = require('./tasks/production.js')
+const clean = require('./tasks/clean.js')
+const css = require('./tasks/css.js')
+const runLinter = require('./tasks/lint.js')
+const staticTask = require('./tasks/static.js')
+//const intl = require('./tasks/intl.js')
+//const watch = require('./tasks/watch.js')
+const deploy = require('./tasks/deploy.js')
+const htmlTask = require('./tasks/html.js')
+const images = require('./tasks/images.js')
+const webpackProductionTask = require("./tasks/webpackProduction.js");
+const rev = require('./tasks/rev/index.js');
+
+
+
+exports.clean = clean
+exports.lint  = runLinter
+exports.deploy = deploy
+exports.production = production
+exports.images = images
+exports.html = htmlTask
+exports["webpack:production"] = webpackProductionTask
+exports.rev = rev
+exports.static = staticTask
+
+exports.default = series(clean,runLinter,staticTask)
+//exports.default = series(clean,runLinter,staticTask,intl,watch)

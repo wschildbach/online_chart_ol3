@@ -1,6 +1,5 @@
 var config = require('../config')
 
-var gulp = require('gulp')
 var fs = require('fs')
 var globSync = require('glob').sync
 var mkdirpSync = require('mkdirp').sync
@@ -35,5 +34,4 @@ const intlTask = (callback) => {
   callback()
 }
 
-gulp.task('intl', intlTask)
 module.exports = intlTask
