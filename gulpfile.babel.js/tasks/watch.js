@@ -1,5 +1,6 @@
 var config = require('../config')
-//var gulp = require('gulp')
+var {series} = require('gulp')
+const browserSync = require('./browserSync.js')
 var path = require('path')
 var watch = require('gulp-watch')
 
@@ -17,5 +18,5 @@ var watchTask = function () {
   })
 }
 
-gulp.task('watch', ['browserSync'], watchTask)
+module.watch = series(browserSync, watchTask)
 module.exports = watchTask
