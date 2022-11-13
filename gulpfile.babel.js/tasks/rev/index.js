@@ -1,14 +1,16 @@
-var {series} = require('gulp')
+var gulp = require('gulp')
+/*
 var _f1 = require('./rev-assets')
 var _f2 = require('./rev-update-references')
 var _f3 = require('./rev-css')
 var _f4 = require('./rev-js')
 var _f5 = require('./update-html')
 var _f6 = require('./sizereport')
+*/
 
 // If you are familiar with Rails, this task the equivalent of `rake assets:precompile`
-function revTask(cb) {
-  series(
+var revTask = function (cb) {
+  gulp.series(
     // 1) Add md5 hashes to assets referenced by CSS and JS files
     'rev-assets',
     // 2) Update asset references (images, fonts, etc) with reved filenames in compiled css + js
@@ -21,7 +23,7 @@ function revTask(cb) {
     // 5) Report filesizes
     'size-report',
     cb)
-//    cb();
 }
 
+gulp.task('rev', revTask)
 module.exports = revTask
