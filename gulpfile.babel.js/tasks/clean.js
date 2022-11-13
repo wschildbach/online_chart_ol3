@@ -1,12 +1,13 @@
-//const {del}    = require('del')
+//const {deleteSync,deleteAsync} = require('del')
 var config = require('../config')
 
 function clean(cb) {
+  console.log("cleanTask not working at the moment")
 /*
-  del([config.root.dest]).then(function (paths) {
+  deleteAsync([config.root.dest]).then(function (paths) {
     cb();
   })
-  */
+*/
   cb();
 }
 
