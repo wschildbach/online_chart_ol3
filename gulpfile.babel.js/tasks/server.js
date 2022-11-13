@@ -2,7 +2,7 @@ var compress = require('compression')
 var config = require('../config')
 var express = require('express')
 var gulp = require('gulp')
-var gutil = require('gulp-util')
+var log = require('fancy-log')
 var logger = require('morgan')
 var open = require('open')
 var path = require('path')
@@ -26,7 +26,7 @@ var serverTask = function () {
     .use('/', express.static(settings.root, settings.staticOptions))
     .listen(settings.port)
 
-  gutil.log('production server started on ' + gutil.colors.green(url))
+  log('production server started on ' + log.colors.green(url))
   open(url)
 }
 
