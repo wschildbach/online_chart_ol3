@@ -1,16 +1,17 @@
-const {series} = require('gulp')
+var gulp = require('gulp')
+var getEnabledTasks = require('../lib/getEnabledTasks')
 const clean = require('./clean.js')
 const runLinter = require('./lint.js')
 const rev = require('./rev/index.js')
-const _ = require('./static.js')
+const staticTask = require('./static.js')
 
-var getEnabledTasks = require('../lib/getEnabledTasks')
-
-function productionTask(cb) {
+function assetCodeTasks(cb) {
   var tasks = getEnabledTasks('production')
-  series('clean', 'lint', tasks.assetTasks, tasks.codeTasks, 'rev', 'static',cb)
-  cb()
+  console.log("assetCodeTask")
+  gulp.series(tasks.assetTasks, tasks.codeTasks)
 }
 
-module.production = productionTask
+var productionTask = gulp.series(clean,runLinter,assetCodeTasks,rev,staticTask)
+
+gulp.task('production', productionTask)
 module.exports = productionTask
