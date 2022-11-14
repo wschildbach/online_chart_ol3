@@ -6,11 +6,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 var CircleProgressBar = require('rc-progress').Circle
+const progressScale = 100
 
-const LayerProgressBar = ({loadState, enabled}) => {
-  let progress = 100
+const LayerProgressBar = ({ loadState, enabled }) => {
+  let progress = progressScale
   if (enabled && loadState.loading) {
-    progress = loadState.loaded / loadState.loading * 100
+    progress = loadState.loaded / loadState.loading * progressScale
   }
 
   var circleContainerStyle = {
@@ -26,7 +27,7 @@ const LayerProgressBar = ({loadState, enabled}) => {
     error: '#fc2024'
   }
   let color = colors.success
-  if (progress < 100) color = colors.active
+  if (progress < progressScale) color = colors.active
   if (loadState.lastError) color = colors.error
   if (!enabled) color = colors.inactive
 
