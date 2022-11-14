@@ -21,7 +21,7 @@ export const messages = defineMessages({
 module.exports = function (context, options) {
   let source = new ol.source.TileWMS({
     url: 'http://osm.franken.de:8080/geoserver/gwc/service/wms', // server does not support https :(
-    params: {'LAYERS': 'gebco_2014', 'VERSION': '1.1.1'}
+    params: { LAYERS: 'gebco_2014', VERSION: '1.1.1' }
   })
 
   source.on(['tileloadstart', 'tileloadend', 'tileloaderror'], function (ev) {

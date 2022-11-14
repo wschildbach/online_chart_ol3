@@ -21,7 +21,7 @@ module.exports = function (query) {
           let format = this.getFormat()
           let features = format.readFeatures(data, {featureProjection: projection})
           this.addFeatures(features)
-          this.dispatchEvent({type: 'tileloadend', target: this})
+          this.dispatchEvent({ type: 'tileloadend', target: this })
         },
         error: function (jqXHR, textStatus, errorThrown) {
           this.dispatchEvent({
@@ -33,7 +33,7 @@ module.exports = function (query) {
         },
         context: this
       })
-      this.dispatchEvent({type: 'tileloadstart', target: this})
+      this.dispatchEvent({ type: 'tileloadstart', target: this })
     },
     strategy: ol.loadingstrategy.bbox
   })

@@ -46,15 +46,15 @@ function compressVisibleLayers (visibleLayers) {
   arr.fill('-')
   let ids = Object.keys(visibleLayers)
   ids.forEach(id => {
-    let layerOverlay = _.find(availibleOverlayLayers, {
-      'id': id
+    const layerOverlay = _.find(availibleOverlayLayers, {
+      id
     })
     if (layerOverlay) {
       arr[layerOverlay.urlIndex2016] = visibleLayers[id] ? '1' : '0'
     }
 
-    let layerBase = _.find(availibleBaseLayers, {
-      'id': id
+    const layerBase = _.find(availibleBaseLayers, {
+      id
     })
     if (layerBase && visibleLayers[id]) {
       baseLayerCode = layerBase.urlIndex2016BaseLayer
@@ -78,8 +78,8 @@ function decompressVisibleLayers (layersString) {
     console.warn('This layers format is depricated. Please update your url parameter to the new standart.')
     let arr = layersString.split('') // convert to array
     for (let i = 0; i < arr.length; i++) {
-      let layer = _.find(allLayers, {
-        'urlIndex2013': i + 1
+      const layer = _.find(allLayers, {
+        urlIndex2013: i + 1
       })
       if (layer) layers[layer.id] = _.indexOf(['B', 'T'], arr[i]) >= 0
     }
@@ -88,8 +88,8 @@ function decompressVisibleLayers (layersString) {
     /* e.g. layers=A010-10 */
     let arr = overlayString.split('') // convert to array
     for (let i = 0; i < arr.length; i++) {
-      let layer = _.find(availibleOverlayLayers, {
-        'urlIndex2016': i
+      const layer = _.find(availibleOverlayLayers, {
+        urlIndex2016: i
       })
       if (layer) layers[layer.id] = (arr[i] === '1')
     }

@@ -14,11 +14,11 @@ const LayerProgressBar = ({ loadState, enabled }) => {
     progress = loadState.loaded / loadState.loading * progressScale
   }
 
-  var circleContainerStyle = {
-    'width': '24px',
-    'height': '24px',
-    'float': 'right',
-    'marginTop': '3px'
+  const circleContainerStyle = {
+    width: '24px',
+    height: '24px',
+    float: 'right',
+    marginTop: '3px'
   }
   let colors = {
     active: '#3FC7FA',

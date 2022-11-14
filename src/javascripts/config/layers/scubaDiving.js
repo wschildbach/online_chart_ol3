@@ -38,12 +38,12 @@ module.exports = function (context, options) {
   }
   Object.assign(defaults, options)
 
-  var styles = {
-    'sport': {
-      'scuba_diving': new SimpleImageSvgStyle(ScubaDivingSvg, defaults.iconSize, defaults.iconSize)
+  const styles = {
+    sport: {
+      scuba_diving: new SimpleImageSvgStyle(ScubaDivingSvg, defaults.iconSize, defaults.iconSize)
     },
-    'amenity': {
-      'dive_centre': new SimpleImageSvgStyle(DiveCentreSvg, defaults.iconSize, defaults.iconSize)
+    amenity: {
+      dive_centre: new SimpleImageSvgStyle(DiveCentreSvg, defaults.iconSize, defaults.iconSize)
     }
   }
   let tagBasedStyle = (feature) => {

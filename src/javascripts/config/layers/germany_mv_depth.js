@@ -30,8 +30,8 @@ module.exports = function (context, options) {
     ],
     url: '//www.geodaten-mv.de/dienste/tiefenkarten_seen_wms?lang=ger&',
     params: {
-      'LAYERS': 'tiefenlinien,uferlinien',
-      'TILED': true
+      LAYERS: 'tiefenlinien,uferlinien',
+      TILED: true
     },
     gutter: 0
   })
