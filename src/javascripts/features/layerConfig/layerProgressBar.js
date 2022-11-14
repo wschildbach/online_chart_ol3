@@ -2,7 +2,8 @@
 * @license AGPL-3.0
 * @author aAXEe (https://github.com/aAXEe)
 */
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 
 var CircleProgressBar = require('rc-progress').Circle
 

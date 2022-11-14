@@ -5,6 +5,7 @@
 'use strict'
 
 import React from 'react'
+import PropTypes from 'prop-types'
 import ol from 'openlayers'
 
 class OL3Control extends React.Component {
@@ -31,10 +32,10 @@ class OL3Control extends React.Component {
   }
 }
 OL3Control.propTypes = {
-  addControlToMap: React.PropTypes.func.isRequired,
-  className: React.PropTypes.string,
-  id: React.PropTypes.string.isRequired,
-  position: React.PropTypes.string.isRequired
+  addControlToMap: PropTypes.func.isRequired,
+  className: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  position: PropTypes.string.isRequired
 }
 
 export default OL3Control

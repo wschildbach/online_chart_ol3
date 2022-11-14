@@ -4,6 +4,7 @@
 */
 'use strict'
 import React from 'react'
+import PropTypes from 'prop-types'
 import _ from 'lodash'
 
 import './MetaControl.scss'
@@ -63,7 +64,7 @@ class MetaControl extends React.Component {
 }
 
 MetaControl.propTypes = {
-  children: React.PropTypes.arrayOf(React.PropTypes.element).isRequired
+  children: PropTypes.arrayOf(PropTypes.element).isRequired
 }
 
 export default MetaControl

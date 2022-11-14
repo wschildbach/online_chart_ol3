@@ -6,7 +6,8 @@
 'use strict'
 
 import ReactDOM from 'react-dom'
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 
 import { addLocaleData } from 'react-intl'
 import IntlProvider from './intlProvider'
@@ -57,7 +58,7 @@ class MapLayerProvider extends React.Component {
 }
 MapLayerProvider.childContextTypes = {
   layers: PropTypes.arrayOf(LayerType.isRequired).isRequired,
-  store: React.PropTypes.object
+  store: PropTypes.object
 }
 MapLayerProvider.propTypes = {
   children: PropTypes.node,

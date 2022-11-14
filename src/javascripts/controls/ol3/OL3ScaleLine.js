@@ -4,7 +4,7 @@
 */
 'use strict'
 
-import React from 'react'
+import PropTypes from 'prop-types'
 import OL3Control from './OL3Control'
 import ol from 'openlayers'
 
@@ -19,7 +19,7 @@ class OL3ScaleLine extends OL3Control {
   }
 }
 OL3ScaleLine.propTypes = Object.assign({}, OL3Control.propTypes, {
-  units: React.PropTypes.string.isRequired
+  units: PropTypes.string.isRequired
 })
 
 export default OL3ScaleLine

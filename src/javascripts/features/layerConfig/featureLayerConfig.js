@@ -3,7 +3,8 @@
 * @author aAXEe (https://github.com/aAXEe)
 * @author mojoaxel (https://github.com/mojoaxel)
 */
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
 import { Collapse } from 'react-bootstrap'

@@ -4,6 +4,7 @@
 */
 'use strict'
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import LayerConfig from './layerConfig/featureLayerConfig'
 import MdLayers from 'react-icons/lib/md/layers'
@@ -50,9 +51,9 @@ export const TabSidebarDetails = {
   content: <FeatureDetails />
 }
 
-export const TabType = React.PropTypes.shape({
-  align: React.PropTypes.string.isRequired,
-  content: React.PropTypes.node.isRequired,
-  icon: React.PropTypes.node.isRequired,
-  name: React.PropTypes.string.isRequired
+export const TabType = PropTypes.shape({
+  align: PropTypes.string.isRequired,
+  content: PropTypes.node.isRequired,
+  icon: PropTypes.node.isRequired,
+  name: PropTypes.string.isRequired
 })

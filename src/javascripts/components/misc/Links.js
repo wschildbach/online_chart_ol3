@@ -6,16 +6,17 @@
 import './Links.scss'
 
 import React from 'react'
+import PropTypes from 'prop-types'
 import MdDownload from 'react-icons/lib/md/file-download'
 import FaLink from 'react-icons/lib/fa/external-link'
 
-let LinkPropTypes = {
-  children: React.PropTypes.oneOfType([
-    React.PropTypes.arrayOf(React.PropTypes.node),
-    React.PropTypes.node
+const LinkPropTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
   ]).isRequired,
-  href: React.PropTypes.string.isRequired,
-  title: React.PropTypes.string
+  href: PropTypes.string.isRequired,
+  title: PropTypes.string
 }
 
 /**

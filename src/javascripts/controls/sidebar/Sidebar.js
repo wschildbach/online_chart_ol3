@@ -5,6 +5,7 @@
 'use strict'
 
 import React from 'react'
+import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -100,12 +101,12 @@ class Sidebar extends React.Component {
 }
 
 Sidebar.propTypes = {
-  isOpen: React.PropTypes.bool.isRequired,
-  position: React.PropTypes.string.isRequired,
-  setSidebarActiveTab: React.PropTypes.func.isRequired,
-  setSidebarOpen: React.PropTypes.func.isRequired,
-  sidebarSelectedTab: React.PropTypes.string.isRequired,
-  tabs: React.PropTypes.arrayOf(TabType).isRequired
+  isOpen: PropTypes.bool.isRequired,
+  position: PropTypes.string.isRequired,
+  setSidebarActiveTab: PropTypes.func.isRequired,
+  setSidebarOpen: PropTypes.func.isRequired,
+  sidebarSelectedTab: PropTypes.string.isRequired,
+  tabs: PropTypes.arrayOf(TabType).isRequired
 }
 
 function mapStateToProps (state) {

@@ -4,7 +4,7 @@
 */
 'use strict'
 
-import { PropTypes } from 'react'
+import PropTypes from 'prop-types'
 import TabType from 'features/tabs'
 var warning = require('fbjs/lib/warning')
 

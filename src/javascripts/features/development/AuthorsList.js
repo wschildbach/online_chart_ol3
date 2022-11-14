@@ -4,7 +4,8 @@
 */
 'use strict'
 
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import { ExternalLink } from '../../components/misc/Links'
 
 class AuthorsList extends React.Component {

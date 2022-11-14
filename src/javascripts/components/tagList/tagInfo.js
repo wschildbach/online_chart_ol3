@@ -5,7 +5,8 @@
 */
 'use strict'
 
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import LanguageCodePropTypes from '../../propTypes/langCodes'
 import { Button, FormGroup, InputGroup, FormControl, ProgressBar, Label } from 'react-bootstrap'
 import FaInfo from 'react-icons/lib/fa/info-circle'

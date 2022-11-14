@@ -5,7 +5,8 @@
 */
 'use strict'
 
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import TagInfo from './tagInfo'
 import { ClickOnMarkersMessage } from 'utils'
 import { FormattedMessage } from 'react-intl'

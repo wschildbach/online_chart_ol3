@@ -4,6 +4,7 @@
 */
 'use strict'
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import ReactToggle from 'react-toggle'
 import 'react-toggle/style.css'
@@ -20,7 +21,7 @@ class OsmToggle extends React.Component {
   }
 
   render () {
-    var toggleId = 'toggle_' + this.props.layerId + (this.props.checked ? '_checked' : '_unchecked')
+    const toggleId = 'toggle_' + this.props.layerId + (this.props.checked ? '_checked' : '_unchecked')
     return (
       <div className='toggle'>
         <ReactToggle
@@ -39,14 +40,14 @@ class OsmToggle extends React.Component {
 }
 
 OsmToggle.propTypes = {
-  checked: React.PropTypes.bool.isRequired,
-  children: React.PropTypes.oneOfType([
-    React.PropTypes.arrayOf(React.PropTypes.node),
-    React.PropTypes.node
+  checked: PropTypes.bool.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
   ]),
-  label: React.PropTypes.node.isRequired,
-  layerId: React.PropTypes.string.isRequired,
-  onChange: React.PropTypes.func.isRequired
+  label: PropTypes.node.isRequired,
+  layerId: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired
 }
 
 export default OsmToggle
