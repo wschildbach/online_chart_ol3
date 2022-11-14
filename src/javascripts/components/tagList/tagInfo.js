@@ -55,7 +55,9 @@ class TagInfo extends React.Component {
     const { tag } = this.props
     const btnStyle = this.state.extended
       ? this.state.detailsLoading
-        ? 'warning' : 'primary' : 'default'
+        ? 'warning'
+        : 'primary'
+      : 'default'
 
     const loading = (
       <ProgressBar
@@ -69,7 +71,9 @@ class TagInfo extends React.Component {
 
     const details = this.state.extended
       ? this.state.detailsLoading
-        ? loading : displayInfo : null
+        ? loading
+        : displayInfo
+      : null
 
     return (
       <form>

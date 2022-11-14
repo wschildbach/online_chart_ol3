@@ -8,11 +8,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
-import {Form, FormGroup, FormControl, ControlLabel} from 'react-bootstrap'
+import { Form, FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
 import { setLocale } from 'store/actions'
-import {allLocales} from 'intlProvider'
+import { allLocales } from 'intlProvider'
 
-export const LocaleSwitchControl = ({locale, setLocale}) => (
+export const LocaleSwitchControl = ({ locale, setLocale }) => (
   <Form componentClass='fieldset' inline>
     <FormGroup controlId='formLocaleSwitch'>
       <ControlLabel>

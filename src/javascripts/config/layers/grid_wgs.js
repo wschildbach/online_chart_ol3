@@ -123,10 +123,10 @@ module.exports = function (context, options) {
   context.subscribe(storeChangeHandler)
 
   const lineStrokeStyle = new ol.style.Style({
-    stroke: new ol.style.Stroke({color: '#888'})
+    stroke: new ol.style.Stroke({ color: '#888' })
   })
-  const textStrokeStyle = new ol.style.Stroke({color: 'rgba(255,255,255,0.8)', width: 3})
-  const textFillStyle = new ol.style.Fill({color: '#444'})
+  const textStrokeStyle = new ol.style.Stroke({ color: 'rgba(255,255,255,0.8)', width: 3 })
+  const textFillStyle = new ol.style.Fill({ color: '#444' })
   const font = '12px sans-serif'
 
   const styleFunction = function (feature) {

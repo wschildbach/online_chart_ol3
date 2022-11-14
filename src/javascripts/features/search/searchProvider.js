@@ -10,7 +10,7 @@ import { connect } from 'react-redux'
 
 import { searchEnd } from 'store/actions'
 
-import {SEARCH_STATE_IDLE, SEARCH_STATE_ERROR, SEARCH_STATE_RUNNING, SEARCH_STATE_COMPLETE} from 'store/reducers'
+import { SEARCH_STATE_IDLE, SEARCH_STATE_ERROR, SEARCH_STATE_RUNNING, SEARCH_STATE_COMPLETE } from 'store/reducers'
 const $ = require('jquery')
 
 class SearchProviderComponent extends React.Component {

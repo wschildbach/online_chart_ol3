@@ -6,7 +6,7 @@
 
 import React from 'react'
 import { ClickOnMarkersMessage } from 'utils'
-import {TabSidebarDetails} from 'features/tabs'
+import { TabSidebarDetails } from 'features/tabs'
 import controlIds from '../../controls/ol3/controls'
 import orderIds from '../layerOrderNumbers'
 

@@ -22,7 +22,7 @@ module.exports = function (context, options) {
     layer: new ol.layer.Tile({
       source: new ol.source.TileDebug({
         projection: 'EPSG:3857',
-        tileGrid: ol.tilegrid.createXYZ({maxZoom: 22})
+        tileGrid: ol.tilegrid.createXYZ({ maxZoom: 22 })
       }),
       zIndex: orderIds.user_over_all
     })

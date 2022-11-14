@@ -6,7 +6,7 @@
 
 import React from 'react'
 import { ClickOnMarkersMessage } from 'utils'
-import {TabSidebarDetails} from 'features/tabs'
+import { TabSidebarDetails } from 'features/tabs'
 import ol from 'openlayers'
 import ChartLayer from '../chartlayer'
 import orderIds from '../layerOrderNumbers'
@@ -110,7 +110,7 @@ module.exports = function (context, options) {
           })
 
           this.addFeatures(features)
-          this.dispatchEvent({type: 'tileloadend', target: this})
+          this.dispatchEvent({ type: 'tileloadend', target: this })
         },
         error: function (jqXHR, textStatus, errorThrown) {
           this.dispatchEvent({
@@ -123,7 +123,7 @@ module.exports = function (context, options) {
         context: this
       })
 
-      this.dispatchEvent({type: 'tileloadstart', target: this})
+      this.dispatchEvent({ type: 'tileloadstart', target: this })
     },
     strategy: ol.loadingstrategy.bbox
   })

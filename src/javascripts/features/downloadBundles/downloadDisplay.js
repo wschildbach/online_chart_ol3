@@ -55,21 +55,21 @@ export const DownloadDisplay = ({
         id='download-file-format'
         defaultMessage='Format: {format}'
         description='Display a file format name'
-        values={{format: feature.format}} />
+        values={{ format: feature.format }} />
       <br />
       <FormattedMessage
         id='download-file-application'
         defaultMessage='Application: {app}'
         description='Display an application name'
-        values={{app: feature.app}} />
+        values={{ app: feature.app }} />
       <br />
       {feature.filesize > 0
-          ? <FormattedMessage
+        ? <FormattedMessage
             id='download-file-filesize'
             defaultMessage='Size: {size}'
             description='Display the file size'
-            values={{size: humanFileSize(feature.filesize, false)}} />
-          : <div />
+            values={{ size: humanFileSize(feature.filesize, false) }} />
+        : <div />
         }
       <br />
       <DownloadLink href={feature.url}>

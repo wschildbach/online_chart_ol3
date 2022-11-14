@@ -8,15 +8,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import {FormGroup, InputGroup, FormControl, Button} from 'react-bootstrap'
+import { FormGroup, InputGroup, FormControl, Button } from 'react-bootstrap'
 import MdSearch from 'react-icons/lib/md/search'
 import MdClear from 'react-icons/lib/md/clear'
 
 import { searchStart, searchClear } from 'store/actions'
 import { setSidebarOpen, setSidebarActiveTab } from 'controls/sidebar/store'
 
-import {SearchTab} from 'config/layers/search'
-import {SEARCH_STATE_IDLE, SEARCH_STATE_ERROR, SEARCH_STATE_RUNNING, SEARCH_STATE_COMPLETE} from 'store/reducers'
+import { SearchTab } from 'config/layers/search'
+import { SEARCH_STATE_IDLE, SEARCH_STATE_ERROR, SEARCH_STATE_RUNNING, SEARCH_STATE_COMPLETE } from 'store/reducers'
 
 class SearchBarComponent extends React.Component {
   constructor (props) {
@@ -46,6 +46,7 @@ class SearchBarComponent extends React.Component {
     e.preventDefault()
     this.props.onSearchSubmit(this.state.value)
   }
+
   handleClear (e) {
     e.preventDefault()
     this.props.onSearchClear()

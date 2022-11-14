@@ -4,16 +4,16 @@
 */
 import uniloc from 'uniloc'
 import _ from 'lodash'
-import {SearchTab} from 'config/layers/search'
-import {DownloadTab} from 'config/layers/downloadBundles'
-import {getExistingLocaleForCode, defaultLocale} from '../intlProvider'
-import {availibleBaseLayers, availibleOverlayLayers} from '../config/layerlist'
+import { SearchTab } from 'config/layers/search'
+import { DownloadTab } from 'config/layers/downloadBundles'
+import { getExistingLocaleForCode, defaultLocale } from '../intlProvider'
+import { availibleBaseLayers, availibleOverlayLayers } from '../config/layerlist'
 
 import {
   searchDefaultState, SEARCH_STATE_RUNNING,
   downloadDefaultState
 } from './reducers'
-import {sidebarDefaultState, setSidebarActiveTab} from 'controls/sidebar/store'
+import { sidebarDefaultState, setSidebarActiveTab } from 'controls/sidebar/store'
 import {
   initLayerVisible,
   setViewPosition,
@@ -192,7 +192,7 @@ export function getStateFromUrlHash (defaults) {
       if (res.options.format) {
         additions.downloadBundles = downloadDefaultState
         if (res.options.format) {
-          additions.downloadBundles.filter = {format: res.options.format}
+          additions.downloadBundles.filter = { format: res.options.format }
         }
         if (res.options.clickedId) {
           additions.downloadBundles.clickedFeatureId = Number(res.options.clickedId)

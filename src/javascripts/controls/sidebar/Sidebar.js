@@ -9,7 +9,7 @@ import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import {TabType} from 'features/tabs'
+import { TabType } from 'features/tabs'
 import { setSidebarOpen, setSidebarActiveTab } from './store'
 
 import FaAngleDoubleLeft from 'react-icons/lib/fa/angle-double-left'
@@ -93,7 +93,7 @@ class Sidebar extends React.Component {
                 { tab.content }
               </div>
             </article>
-            )) }
+          )) }
         </main>
       </div>
     )

@@ -19,7 +19,7 @@ class AuthorsList extends React.Component {
               { author.name }
             </ExternalLink>
           </li>
-          )) }
+        )) }
       </ul>
     )
   }

@@ -42,13 +42,13 @@ export const sidebarDefaultState = {
 export const sidebar = (state = sidebarDefaultState, action) => {
   switch (action.type) {
     case TOGGLE_SIDEBAR_OPEN: {
-      return Object.assign({}, state, {isOpen: !state.isOpen})
+      return Object.assign({}, state, { isOpen: !state.isOpen })
     }
     case SET_SIDEBAR_OPEN: {
-      return Object.assign({}, state, {isOpen: action.setOpen})
+      return Object.assign({}, state, { isOpen: action.setOpen })
     }
     case SET_SIDEBAR_ACTIVE_TAB: {
-      return Object.assign({}, state, {selectedTab: action.tabName})
+      return Object.assign({}, state, { selectedTab: action.tabName })
     }
     default:
       return state

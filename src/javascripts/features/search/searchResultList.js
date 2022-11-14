@@ -57,7 +57,7 @@ const ResultList = ({
             <FormattedMessage
               id='search-results'
               defaultMessage='Results: {numberResults, number}'
-              values={{numberResults: results.length}} />
+              values={{ numberResults: results.length }} />
           </h2>
           <ListGroup>
             {results.map(result => (
@@ -70,7 +70,7 @@ const ResultList = ({
                 onResultHovered={() => { onResultHovered(result.place_id) }}
                 onResultUnhover={onResultUnhover}
                 result={result} />
-              ))
+            ))
             }
           </ListGroup>
         </div>
@@ -80,7 +80,7 @@ const ResultList = ({
         <FormattedMessage
           id='search-error'
           defaultMessage='Your search returned an error: {message}.'
-          values={{message: results}} />
+          values={{ message: results }} />
       )
   }
   return null

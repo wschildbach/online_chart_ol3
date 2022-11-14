@@ -24,13 +24,13 @@ import {
 } from '../../store/actions'
 
 import {
-    setSidebarOpen,
-    setSidebarActiveTab
+  setSidebarOpen,
+  setSidebarActiveTab
 } from '../../controls/sidebar/store'
 import {
-    SEARCH_STATE_ERROR,
-    SEARCH_STATE_RUNNING,
-    SEARCH_STATE_COMPLETE
+  SEARCH_STATE_ERROR,
+  SEARCH_STATE_RUNNING,
+  SEARCH_STATE_COMPLETE
 } from 'store/reducers'
 
 import { setViewPosition } from 'store/actions'
@@ -253,7 +253,7 @@ export default function (context, options) {
       <div>
         <SearchBar / >
       </div>
-      ),
+    ),
     additionalTab: SearchTab
   }
 

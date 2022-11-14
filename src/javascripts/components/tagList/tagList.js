@@ -24,7 +24,7 @@ const TagList = ({ tags }) => (
         key={tag.key}
         locales='de'
         tag={tag} />
-      )) }
+    )) }
   </div>
 )
 TagList.propTypes = {

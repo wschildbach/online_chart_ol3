@@ -26,7 +26,7 @@ export const getExistingLocaleForCode = (langCode) => {
 const browserLocale = navigator.language || navigator.browserLanguage
 export const defaultLocale = getExistingLocaleForCode(browserLocale)
 
-export const IntlAppProviderInternal = ({locale, children}) => (
+export const IntlAppProviderInternal = ({ locale, children }) => (
   <IntlProvider
     locale={locale}
     key={locale}

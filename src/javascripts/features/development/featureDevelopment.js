@@ -34,11 +34,13 @@ class FeatureDevelopment extends React.Component {
             <FormattedMessage
               id='issues-bug-found'
               defaultMessage='If you found a bug or if you have an idea for a new feature please file a new { linkGitHubIssues }.'
-              values={{ linkGitHubIssues: (
+              values={{
+                linkGitHubIssues: (
                 <ExternalLink href={PACKAGE.bugs.url}>
                   <FormattedMessage id='issues-bug-found-new' defaultMessage='github issue' />
                 </ExternalLink>
-                ) }} />
+                )
+              }} />
             <br />
           </div>
           <div>
@@ -64,7 +66,8 @@ class FeatureDevelopment extends React.Component {
                   <DownloadLink href={repoUrl + '/tarball/master'}>
                     <FormattedMessage id='source-links-tarball' defaultMessage='release tarball' />
                   </DownloadLink>
-                   ) }} />
+                )
+              }} />
           </div>
         </section>
         <section>
@@ -78,12 +81,13 @@ class FeatureDevelopment extends React.Component {
                   <ExternalLink href='http://www.gnu.org/philosophy/floss-and-foss.en.html'>
                     <FormattedMessage id='license-links-foss-text' defaultMessage='Free/Libre Open Source Software' />
                   </ExternalLink>
-                    ),
+                ),
                 linkLicense: (
                   <ExternalLink href={'https://spdx.org/licenses/' + PACKAGE.license + '.html'}>
                     { PACKAGE.license }
                   </ExternalLink>
-                     ) }} />
+                )
+              }} />
           </div>
         </section>
         <section>

@@ -57,8 +57,8 @@ export default function (context, options) {
   }
   Object.assign(defaults, options)
 
-  const textStrokeStyle = new ol.style.Stroke({color: 'rgba(255,255,255,0.8)', width: 2})
-  const textFillStyle = new ol.style.Fill({color: '#222'})
+  const textStrokeStyle = new ol.style.Stroke({ color: 'rgba(255,255,255,0.8)', width: 2 })
+  const textFillStyle = new ol.style.Fill({ color: '#222' })
   const defaultPolygonFill = new ol.style.Fill({
     color: 'rgba(255, 165, 45, 0.3)'
   })
@@ -125,7 +125,7 @@ export default function (context, options) {
             }
           }
           this.addFeatures(features)
-          this.dispatchEvent({type: 'tileloadend', target: this})
+          this.dispatchEvent({ type: 'tileloadend', target: this })
         },
         error: function (jqXHR, textStatus, errorThrown) {
           this.dispatchEvent({
@@ -137,7 +137,7 @@ export default function (context, options) {
         },
         context: this
       })
-      this.dispatchEvent({type: 'tileloadstart', target: this})
+      this.dispatchEvent({ type: 'tileloadstart', target: this })
     }
   })
   const filterFeatures = (filter) => {
@@ -154,7 +154,7 @@ export default function (context, options) {
 
       const featuresCompressed = []
       for (const f of source.getFeatures()) {
-        featuresCompressed.push(Object.assign({_id: f.getId()}, _.omit(f.getProperties(), 'geometry')))
+        featuresCompressed.push(Object.assign({ _id: f.getId() }, _.omit(f.getProperties(), 'geometry')))
       }
       context.dispatch(downloadSetFeatures(featuresCompressed))
     }

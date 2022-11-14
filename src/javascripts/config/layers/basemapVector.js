@@ -45,6 +45,7 @@ class LayerConfig extends React.Component {
     this.setState({ showBuildings: !this.state.showBuildings })
     this.props.setShowBuildings(!this.state.showBuildings)
   }
+
   handleToggleNight (e) {
     this.setState({ useNightMode: !this.state.useNightMode })
     this.props.setUseNightMode(!this.state.useNightMode)
@@ -90,10 +91,10 @@ module.exports = function (context, options) {
   '<a href="http://www.naturalearthdata.com/">Natural Earth</a>, ' +
   '<a href="http://openstreetmapdata.com/">openstreetmapdata.com</a>'
 
-  const baseGrid = ol.tilegrid.createXYZ({maxZoom: 22})
+  const baseGrid = ol.tilegrid.createXYZ({ maxZoom: 22 })
 
   const sourceBase = new ol.source.VectorTile({
-    attributions: [new ol.Attribution({html: ATTRIBUTION})],
+    attributions: [new ol.Attribution({ html: ATTRIBUTION })],
     format: new ol.format.MVT({
       layers: ['earth', 'water', 'landuse']
     }),
@@ -121,44 +122,44 @@ module.exports = function (context, options) {
     day: {
       earth: {
         earth: {
-          polygons: new ol.style.Style({fill: new ol.style.Fill({color: '#ffe278'})})
+          polygons: new ol.style.Style({ fill: new ol.style.Fill({ color: '#ffe278' }) })
         }
       },
       water: {
         '.*': {
-          polygons: new ol.style.Style({fill: new ol.style.Fill({color: '#78acd2'})}),
-          lines: new ol.style.Style({stroke: new ol.style.Stroke({color: '#78acd2', width: 2})})
+          polygons: new ol.style.Style({ fill: new ol.style.Fill({ color: '#78acd2' }) }),
+          lines: new ol.style.Style({ stroke: new ol.style.Stroke({ color: '#78acd2', width: 2 }) })
         }
       },
       roads: {
-        highway: { lines: new ol.style.Style({ stroke: new ol.style.Stroke({color: '#555', width: 1}) }) },
-        major_road: { lines: new ol.style.Style({ stroke: new ol.style.Stroke({color: '#777', width: 0.8}) }) },
-        minor_road: { lines: new ol.style.Style({ stroke: new ol.style.Stroke({color: '#999', width: 0.5}) }) },
-        rail: { lines: new ol.style.Style({ stroke: new ol.style.Stroke({color: '#777', width: 0.8, lineDash: [5, 5]}) }) }
+        highway: { lines: new ol.style.Style({ stroke: new ol.style.Stroke({ color: '#555', width: 1 }) }) },
+        major_road: { lines: new ol.style.Style({ stroke: new ol.style.Stroke({ color: '#777', width: 0.8 }) }) },
+        minor_road: { lines: new ol.style.Style({ stroke: new ol.style.Stroke({ color: '#999', width: 0.5 }) }) },
+        rail: { lines: new ol.style.Style({ stroke: new ol.style.Stroke({ color: '#777', width: 0.8, lineDash: [5, 5] }) }) }
       },
       landuse: {
         'urban_area|urban|residential|commercial|industrial': {
-          polygons: new ol.style.Style({fill: new ol.style.Fill({color: '#f1cc45'})})
+          polygons: new ol.style.Style({ fill: new ol.style.Fill({ color: '#f1cc45' }) })
         },
         'allotments|camp_site|caravan_site|farm|farmland|farmyard|garden|golf_course|grass|grave_yard|meadow|park|picnic_site|plant|scrub|village_green': {
-          polygons: new ol.style.Style({fill: new ol.style.Fill({color: '#c7cc45'})})
+          polygons: new ol.style.Style({ fill: new ol.style.Fill({ color: '#c7cc45' }) })
         },
         'forest|national_park|natural_.*|wood': {
-          polygons: new ol.style.Style({fill: new ol.style.Fill({color: '#a9c047'})})
+          polygons: new ol.style.Style({ fill: new ol.style.Fill({ color: '#a9c047' }) })
         }
       },
       buildings: {
         'building|building_part': {
-          polygons: new ol.style.Style({fill: new ol.style.Fill({color: '#c1ab5b'})})
+          polygons: new ol.style.Style({ fill: new ol.style.Fill({ color: '#c1ab5b' }) })
         }
       },
       boundaries: {
         country: {
-          lines: new ol.style.Style({stroke: new ol.style.Stroke({color: '#973c00', width: 1})})
+          lines: new ol.style.Style({ stroke: new ol.style.Stroke({ color: '#973c00', width: 1 }) })
         },
         region: {
           lines: {
-            style: new ol.style.Style({stroke: new ol.style.Stroke({color: '#973c00', width: 0.5})}),
+            style: new ol.style.Style({ stroke: new ol.style.Stroke({ color: '#973c00', width: 0.5 }) }),
             min_zoom: 7
           }
         }
@@ -167,44 +168,44 @@ module.exports = function (context, options) {
     night: {
       earth: {
         earth: {
-          polygons: new ol.style.Style({fill: new ol.style.Fill({color: '#24303e'})})
+          polygons: new ol.style.Style({ fill: new ol.style.Fill({ color: '#24303e' }) })
         }
       },
       water: {
         '.*': {
-          polygons: new ol.style.Style({fill: new ol.style.Fill({color: '#17233c'})}),
-          lines: new ol.style.Style({stroke: new ol.style.Stroke({color: '#17233c', width: 2})})
+          polygons: new ol.style.Style({ fill: new ol.style.Fill({ color: '#17233c' }) }),
+          lines: new ol.style.Style({ stroke: new ol.style.Stroke({ color: '#17233c', width: 2 }) })
         }
       },
       roads: {
-        highway: { lines: new ol.style.Style({ stroke: new ol.style.Stroke({color: '#353f4d', width: 1}) }) },
-        major_road: { lines: new ol.style.Style({ stroke: new ol.style.Stroke({color: '#353f4d', width: 0.8}) }) },
-        minor_road: { lines: new ol.style.Style({ stroke: new ol.style.Stroke({color: '#353f4d', width: 0.5}) }) },
-        rail: { lines: new ol.style.Style({ stroke: new ol.style.Stroke({color: '#353f4d', width: 0.8, lineDash: [5, 5]}) }) }
+        highway: { lines: new ol.style.Style({ stroke: new ol.style.Stroke({ color: '#353f4d', width: 1 }) }) },
+        major_road: { lines: new ol.style.Style({ stroke: new ol.style.Stroke({ color: '#353f4d', width: 0.8 }) }) },
+        minor_road: { lines: new ol.style.Style({ stroke: new ol.style.Stroke({ color: '#353f4d', width: 0.5 }) }) },
+        rail: { lines: new ol.style.Style({ stroke: new ol.style.Stroke({ color: '#353f4d', width: 0.8, lineDash: [5, 5] }) }) }
       },
       landuse: {
         'urban_area|urban|residential|commercial|industrial': {
-          polygons: new ol.style.Style({fill: new ol.style.Fill({color: '#1e2835'})})
+          polygons: new ol.style.Style({ fill: new ol.style.Fill({ color: '#1e2835' }) })
         },
         'allotments|camp_site|caravan_site|farm|farmland|farmyard|garden|golf_course|grass|grave_yard|meadow|park|picnic_site|plant|scrub|village_green': {
-          polygons: new ol.style.Style({fill: new ol.style.Fill({color: '#1e3132'})})
+          polygons: new ol.style.Style({ fill: new ol.style.Fill({ color: '#1e3132' }) })
         },
         'forest|national_park|natural_.*|wood': {
-          polygons: new ol.style.Style({fill: new ol.style.Fill({color: '#1e312b'})})
+          polygons: new ol.style.Style({ fill: new ol.style.Fill({ color: '#1e312b' }) })
         }
       },
       buildings: {
         'building|building_part': {
-          polygons: new ol.style.Style({fill: new ol.style.Fill({color: '#171f27'})})
+          polygons: new ol.style.Style({ fill: new ol.style.Fill({ color: '#171f27' }) })
         }
       },
       boundaries: {
         country: {
-          lines: new ol.style.Style({stroke: new ol.style.Stroke({color: '#973c00', width: 1})})
+          lines: new ol.style.Style({ stroke: new ol.style.Stroke({ color: '#973c00', width: 1 }) })
         },
         region: {
           lines: {
-            style: new ol.style.Style({stroke: new ol.style.Stroke({color: '#973c00', width: 0.5})}),
+            style: new ol.style.Style({ stroke: new ol.style.Stroke({ color: '#973c00', width: 0.5 }) }),
             min_zoom: 7
           }
         }
@@ -294,12 +295,12 @@ module.exports = function (context, options) {
   // return the url to get the tile at [z, x, -y]
   function tileUrlFunction (tileCoord) {
     return ('https://tile.mapzen.com/mapzen/vector/v1/places/{z}/{x}/{y}.json?api_key=' + KEY)
-              .replace('{z}', String(tileCoord[0]))
-              .replace('{x}', String(tileCoord[1]))
-              .replace('{y}', String(-tileCoord[2]))
+      .replace('{z}', String(tileCoord[0]))
+      .replace('{x}', String(tileCoord[1]))
+      .replace('{y}', String(-tileCoord[2]))
   }
   // xyz grid for tile access
-  const labelGrid = ol.tilegrid.createXYZ({maxZoom: 22})
+  const labelGrid = ol.tilegrid.createXYZ({ maxZoom: 22 })
 
   // return the url to be fetched to get the data inside the resoultion area
   function mapExtentToTile (extent, resoltuion) {
@@ -324,7 +325,7 @@ module.exports = function (context, options) {
   // the locale for the layer
   let mapLocale = context.getState().locale
 
-  const textStrokeStyle = new ol.style.Stroke({color: 'rgba(255,255,255,0.8)', width: 2})
+  const textStrokeStyle = new ol.style.Stroke({ color: 'rgba(255,255,255,0.8)', width: 2 })
   const fontDefault = '12px sans-serif'
 
   const staticLabelStyles = {

@@ -9,7 +9,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import { FormattedMessage } from 'react-intl'
-import {FormGroup, FormControl, ControlLabel} from 'react-bootstrap'
+import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
 
 import { downloadSetFilter } from 'store/actions'
 

@@ -52,6 +52,7 @@ class MapLayerProvider extends React.Component {
       layers: this.props.layers
     }
   }
+
   render () {
     return this.props.children
   }
@@ -75,7 +76,7 @@ function runMyApp () {
       </IntlProvider>
     </Provider>),
   document.getElementById('map')
-)
+  )
 }
 
 if (!global.Intl) {

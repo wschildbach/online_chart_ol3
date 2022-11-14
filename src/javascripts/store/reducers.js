@@ -4,32 +4,32 @@
 */
 
 import {
-    combineReducers,
-    createStore,
-    compose,
-    applyMiddleware
+  combineReducers,
+  createStore,
+  compose,
+  applyMiddleware
 } from 'redux'
 
 import {
-    SET_LOCALE,
-    SET_LAYER_VISIBLE,
-    INIT_LAYER_VISIBLE,
-    SET_VIEW_POSITION,
-    FEATURE_CLICKED,
-    LAYER_TILE_LOAD_CHANGE,
-    SEARCH_START,
-    SEARCH_CLEAR,
-    SEARCH_END,
-    SEARCH_RESULT_HOVERED,
-    SEARCH_RESULT_CLICKED,
-    DOWNLOAD_SET_FEATURES,
-    DOWNLOAD_SET_FILTER,
-    DOWNLOAD_HOVERED,
-    DOWNLOAD_CLICKED
+  SET_LOCALE,
+  SET_LAYER_VISIBLE,
+  INIT_LAYER_VISIBLE,
+  SET_VIEW_POSITION,
+  FEATURE_CLICKED,
+  LAYER_TILE_LOAD_CHANGE,
+  SEARCH_START,
+  SEARCH_CLEAR,
+  SEARCH_END,
+  SEARCH_RESULT_HOVERED,
+  SEARCH_RESULT_CLICKED,
+  DOWNLOAD_SET_FEATURES,
+  DOWNLOAD_SET_FILTER,
+  DOWNLOAD_HOVERED,
+  DOWNLOAD_CLICKED
 } from './actions'
 
 import { sidebar } from '../controls/sidebar/store'
-import {defaultLocale, getExistingLocaleForCode} from 'intlProvider'
+import { defaultLocale, getExistingLocaleForCode } from 'intlProvider'
 
 import { writeToUrlHash } from './urlHashHandling'
 
@@ -39,6 +39,7 @@ function layerVisible (state = {}, action) {
       const vis = {}
       vis[action.id] = action.visible
       return Object.assign({}, state, vis)
+    }
 
     case INIT_LAYER_VISIBLE:
       return Object.assign({}, action.list)
@@ -51,7 +52,7 @@ function layerVisible (state = {}, action) {
 function viewPosition (state = {}, action) {
   switch (action.type) {
     case SET_VIEW_POSITION:
-      return Object.assign({}, state, {position: action.position, extent: action.extent})
+      return Object.assign({}, state, { position: action.position, extent: action.extent })
 
     default:
       return state
@@ -182,17 +183,17 @@ function search (state = searchDefaultState, action) {
 
 export const downloadDefaultState = {
   features: [],
-  filter: {format: '.*'},
+  filter: { format: '.*' },
   hoveredFeatureId: null,
   clickedFeatureId: null
 }
 const downloadBundles = (state = downloadDefaultState, action) => {
   switch (action.type) {
     case DOWNLOAD_SET_FEATURES: {
-      return Object.assign({}, state, {features: action.features})
+      return Object.assign({}, state, { features: action.features })
     }
     case DOWNLOAD_SET_FILTER: {
-      return Object.assign({}, state, {filter: action.filter})
+      return Object.assign({}, state, { filter: action.filter })
     }
     case DOWNLOAD_HOVERED: {
       const obj = {

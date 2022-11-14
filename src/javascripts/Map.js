@@ -238,7 +238,7 @@ class Ol3Map extends React.Component {
           zoom: this.ol3Map.getView().getZoom()
         }
         if (positionsEqual(position, newPosition)) { // manually trigger the moveend
-          this.ol3Map.dispatchEvent({type: 'moveend', target: this})
+          this.ol3Map.dispatchEvent({ type: 'moveend', target: this })
         }
       }
     }
