@@ -31,7 +31,7 @@ module.exports = function (context, options) {
   var defaults = {
     nameKey: 'layer-name-seamarks',
     layer: new ol.layer.Tile({
-      source: source,
+      source,
       zIndex: orderIds.user_overlay
     }),
     additionalControls: [controlIds.scaleline_nautical, controlIds.attribution]

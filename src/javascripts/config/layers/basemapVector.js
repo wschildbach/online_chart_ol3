@@ -396,7 +396,7 @@ module.exports = function (context, options) {
         textAlign: 'center',
         textBaseline: baseline,
         offsetY: circleRadius * 1.2,
-        font: font,
+        font,
         stroke: textStrokeStyle,
         fill: textFill
       })

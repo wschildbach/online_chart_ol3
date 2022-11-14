@@ -31,7 +31,7 @@ module.exports = function (context, options) {
   var defaults = {
     nameKey: 'layer-name-marineProfile',
     layer: new ol.layer.Tile({
-      source: source,
+      source,
       opacity: 0.7,
       zIndex: orderIds.user_under_structures
     }),

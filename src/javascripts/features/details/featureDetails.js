@@ -20,7 +20,7 @@ const mapStateToProps = (state) => {
         return
       }
       taglist.push({
-        key: key,
+        key,
         value: feature[key]
       })
     })

@@ -20,9 +20,9 @@ module.exports = function (svg, maxWidth, maxHeight) {
       anchorXUnits: 'fraction',
       anchorYUnits: 'fraction',
       opacity: 0.75,
-      img: img,
-      imgSize: imgSize,
-      scale: scale
+      img,
+      imgSize,
+      scale
     })
   })
   return iconStyle

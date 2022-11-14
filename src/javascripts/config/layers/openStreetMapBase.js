@@ -32,7 +32,7 @@ module.exports = function (context, options) {
     nameKey: 'layer-name-openstreetmap-base',
     layer: new ol.layer.Tile({
       preload: 6,
-      source: source,
+      source,
       zIndex: orderIds.earth
     }),
     additionalControls: [controlIds.attribution]

@@ -142,7 +142,7 @@ module.exports = function (context, options) {
           textBaseline: 'top',
           offsetX: 2,
           offsetY: 1,
-          font: font,
+          font,
           stroke: textStrokeStyle,
           fill: textFillStyle
         })
@@ -156,7 +156,7 @@ module.exports = function (context, options) {
           textBaseline: 'bottom',
           offsetX: 0,
           offsetY: 0,
-          font: font,
+          font,
           stroke: textStrokeStyle,
           fill: textFillStyle
         })
@@ -168,7 +168,7 @@ module.exports = function (context, options) {
   var defaults = {
     nameKey: 'layer-name-grid-wgs',
     layer: new ol.layer.Vector({
-      source: source,
+      source,
       updateWhileAnimating: true,
       updateWhileInteracting: true,
       renderBuffer: 0,

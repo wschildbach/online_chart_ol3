@@ -16,7 +16,7 @@ module.exports = function (query) {
       var url = baseUrl + queryComplete
 
       $.ajax({
-        url: url,
+        url,
         success: function (data) {
           let format = this.getFormat()
           let features = format.readFeatures(data, {featureProjection: projection})
@@ -27,8 +27,8 @@ module.exports = function (query) {
           this.dispatchEvent({
             type: 'tileloaderror',
             target: this,
-            textStatus: textStatus,
-            errorThrown: errorThrown
+            textStatus,
+            errorThrown
           })
         },
         context: this

@@ -18,7 +18,7 @@ export function setSidebarOpen (setOpen) {
   } else {
     return {
       type: SET_SIDEBAR_OPEN,
-      setOpen: setOpen
+      setOpen
     }
   }
 }
@@ -27,7 +27,7 @@ export const SET_SIDEBAR_ACTIVE_TAB = 'SET_SIDEBAR_ACTIVE_TAB'
 export function setSidebarActiveTab (tabName) {
   return {
     type: SET_SIDEBAR_ACTIVE_TAB,
-    tabName: tabName
+    tabName
   }
 }
 

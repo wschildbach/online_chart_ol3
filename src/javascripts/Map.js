@@ -79,8 +79,8 @@ class Ol3Map extends React.Component {
     this.ol3Map = new ol.Map({
       target: this._input,
       controls: [],
-      layers: layers,
-      interactions: interactions,
+      layers,
+      interactions,
       loadTilesWhileAnimating: true,
       loadTilesWhileInteracting: true,
       view: new ol.View({
@@ -98,8 +98,8 @@ class Ol3Map extends React.Component {
 
       const event = {
         type: 'selectFeature',
-        feature: feature,
-        layer: layer
+        feature,
+        layer
       }
       layer.dispatchEvent(event)
 
@@ -113,8 +113,8 @@ class Ol3Map extends React.Component {
 
       const event = {
         type: 'unselectFeature',
-        feature: feature,
-        layer: layer
+        feature,
+        layer
       }
       layer.dispatchEvent(event)
 
@@ -138,8 +138,8 @@ class Ol3Map extends React.Component {
 
       const event = {
         type: 'hoverFeature',
-        feature: feature,
-        layer: layer
+        feature,
+        layer
       }
       layer.dispatchEvent(event)
 
@@ -153,8 +153,8 @@ class Ol3Map extends React.Component {
 
       const event = {
         type: 'unhoverFeature',
-        feature: feature,
-        layer: layer
+        feature,
+        layer
       }
       layer.dispatchEvent(event)
 

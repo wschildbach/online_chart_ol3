@@ -33,7 +33,7 @@ module.exports = function (context, options) {
     nameKey: 'layer-name-bing-aerial',
     layer: new ol.layer.Tile({
       preload: 6,
-      source: source,
+      source,
       zIndex: orderIds.earth
     }),
     additionalControls: [controlIds.attribution]

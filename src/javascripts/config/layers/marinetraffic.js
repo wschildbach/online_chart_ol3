@@ -58,7 +58,7 @@ module.exports = function (context, options) {
     })
 
     return new ol.style.Style({
-      image: image,
+      image,
       text: nameElement
     })
   }
@@ -116,8 +116,8 @@ module.exports = function (context, options) {
           this.dispatchEvent({
             type: 'tileloaderror',
             target: this,
-            textStatus: textStatus,
-            errorThrown: errorThrown
+            textStatus,
+            errorThrown
           })
         },
         context: this

@@ -117,8 +117,8 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
   return bindActionCreators({
-    setSidebarOpen: setSidebarOpen,
-    setSidebarActiveTab: setSidebarActiveTab
+    setSidebarOpen,
+    setSidebarActiveTab
   }, dispatch)
 }
 

@@ -23,8 +23,8 @@ module.exports = new ol.style.Style({
     anchorXUnits: 'fraction',
     anchorYUnits: 'fraction',
     opacity: 1,
-    img: img,
-    imgSize: imgSize,
-    scale: scale
+    img,
+    imgSize,
+    scale
   })
 })

@@ -63,7 +63,7 @@ module.exports = function (context, options) {
     })
 
     return new ol.style.Style({
-      image: image,
+      image,
       text: nameElement
     })
   }
