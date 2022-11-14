@@ -1,5 +1,9 @@
 {
-    "extends": ["standard", "standard-react"],
+    "extends": [
+        "standard", "standard-react",
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
 
     "plugins": [
         "react"
