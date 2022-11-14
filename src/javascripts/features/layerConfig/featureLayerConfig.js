@@ -58,7 +58,7 @@ class ConfigList extends React.Component {
           {this.context.layers.map(layer => {
             const loadState = this.props.layerLoadState[layer.id] || { loading: 0, loaded: 0 }
             const layerVisible = !!this.props.layerVisible[layer.id]
-            if (!layer.isBaseLayer) return
+            if (!layer.isBaseLayer) return null
             return (
               <li key={'layer_' + layer.id}>
                 <LayerProgressBar
@@ -91,7 +91,7 @@ class ConfigList extends React.Component {
           {this.context.layers.map(layer => {
             const loadState = this.props.layerLoadState[layer.id] || { loading: 0, loaded: 0 }
             const layerVisible = !!this.props.layerVisible[layer.id]
-            if (layer.isBaseLayer) return
+            if (layer.isBaseLayer) return null
             return (
               <li key={'layer_' + layer.id}>
                 <LayerProgressBar
