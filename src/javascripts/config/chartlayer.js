@@ -6,10 +6,10 @@
 
 import PropTypes from 'prop-types'
 import TabType from 'features/tabs'
-var warning = require('fbjs/lib/warning')
+const warning = require('fbjs/lib/warning')
 
 export default function (context, options) {
-  var self = {}
+  const self = {}
 
   self.id = options.id
   warning(self.id !== undefined, 'The layer has no ID set.')

@@ -10,7 +10,7 @@ import { ExternalLink } from '../../components/misc/Links'
 
 class AuthorsList extends React.Component {
   render () {
-    var authors = this.props.authors
+    const authors = this.props.authors
     return (
       <ul className='authorsList'>
         { authors.map((author, i) => (

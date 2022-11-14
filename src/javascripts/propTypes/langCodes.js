@@ -2,8 +2,8 @@
 
 function checkISO639code (languageType) {
   function validate (props, propName, componentName) {
-    var propValue = props[propName]
-    var errorMsg = 'Invalid prop `' + propName +
+    const propValue = props[propName]
+    const errorMsg = 'Invalid prop `' + propName +
       '` supplied to `' + componentName + '`. '
 
     switch (languageType.toUpperCase()) {
@@ -26,7 +26,7 @@ function checkISO639code (languageType) {
   return validate
 }
 
-var LanguageCodePropTypes = {
+const LanguageCodePropTypes = {
   iso638_1: checkISO639code('ISO639-1'),
   iso638_2: checkISO639code('ISO639-2')
 }

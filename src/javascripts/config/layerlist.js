@@ -143,8 +143,8 @@ export const availibleOverlayLayers = [
 ]
 
 export function createLayers (store) {
-  let layers = []
-  let availibleLayers = availibleBaseLayers.concat(availibleOverlayLayers)
+  const layers = []
+  const availibleLayers = availibleBaseLayers.concat(availibleOverlayLayers)
   availibleLayers.forEach(function (layer) {
     layers.push(new layer.LayerConstructor(store, _.omit(layer, 'LayerConstructor')))
   })

@@ -19,7 +19,7 @@ export const messages = defineMessages({
 })
 
 module.exports = function (context, options) {
-  let source = new ol.source.BingMaps({
+  const source = new ol.source.BingMaps({
     key: 'AuA1b41REXrEohfokJjbHgCSp1EmwTcW8PEx_miJUvZERC0kbRnpotPTzGsPjGqa',
     imagerySet: 'Aerial',
     maxZoom: 19,
@@ -29,7 +29,7 @@ module.exports = function (context, options) {
     context.dispatch(layerTileLoadStateChange(options.id, ev))
   })
 
-  var defaults = {
+  const defaults = {
     nameKey: 'layer-name-bing-aerial',
     layer: new ol.layer.Tile({
       preload: 6,

@@ -9,7 +9,7 @@ import { expect } from 'chai'
  * "license": "AGPL-3.0",
  */
 describe('package.json license', () => {
-  var PACKAGE = require('../../../package.json')
+  const PACKAGE = require('../../../package.json')
 
   it('is available', () => {
     expect(PACKAGE).to.have.property('license').that.is.a('string')
@@ -26,7 +26,7 @@ describe('package.json license', () => {
  * },
  */
 describe('package.json bugs', () => {
-  var PACKAGE = require('../../../package.json')
+  const PACKAGE = require('../../../package.json')
 
   it('is availible', () => {
     expect(PACKAGE).to.have.property('bugs')
@@ -34,7 +34,7 @@ describe('package.json bugs', () => {
   })
 
   it('has valid url', () => {
-    var validUrl = require('valid-url')
+    const validUrl = require('valid-url')
     expect(validUrl.isUri(PACKAGE.bugs.url))
   })
 })
@@ -43,15 +43,15 @@ describe('package.json bugs', () => {
  * "repository": "https://github.com/aAXEe/online_chart_ol3",
  */
 describe('package.json repository', () => {
-  var PACKAGE = require('../../../package.json')
+  const PACKAGE = require('../../../package.json')
 
   it('is availible', () => {
     expect(PACKAGE).to.have.property('repository')
   })
 
   it('is a valid repository', () => {
-    var parseRepo = require('parse-repo')
-    var repoInfo = parseRepo(PACKAGE.repository)
+    const parseRepo = require('parse-repo')
+    const repoInfo = parseRepo(PACKAGE.repository)
     expect(repoInfo).to.have.property('owner')
     expect(repoInfo).to.have.property('project')
   })

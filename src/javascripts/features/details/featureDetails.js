@@ -6,14 +6,14 @@
 
 import { connect } from 'react-redux'
 import TagList from '../../components/tagList/tagList'
-var $ = require('jquery')
+const $ = require('jquery')
 
 const ignoredTags = ['geometry', '_clicked', '_hovered']
 
 const mapStateToProps = (state) => {
   const feature = state.selectedFeature.feature
 
-  let taglist = []
+  const taglist = []
   if (state.selectedFeature.hasFeature) {
     Object.keys(feature).forEach(function (key) {
       if ($.inArray(key, ignoredTags) > -1) {

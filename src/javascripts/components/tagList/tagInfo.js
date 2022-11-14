@@ -10,7 +10,7 @@ import PropTypes from 'prop-types'
 import LanguageCodePropTypes from '../../propTypes/langCodes'
 import { Button, FormGroup, InputGroup, FormControl, ProgressBar, Label } from 'react-bootstrap'
 import FaInfo from 'react-icons/lib/fa/info-circle'
-var $ = require('jquery')
+const $ = require('jquery')
 
 class TagInfo extends React.Component {
   constructor (props) {
@@ -42,7 +42,7 @@ class TagInfo extends React.Component {
       })
 
       $.getJSON('//taginfo.openstreetmap.org/api/4/' + 'tag/wiki_pages?' + 'key=' + this.props.tag.key + '&value=' + this.props.tag.value, function (data) {
-        let langData = this.filterForLang(data.data, this.props.locales)
+        const langData = this.filterForLang(data.data, this.props.locales)
         this.setState({
           details: langData,
           detailsLoading: false
@@ -52,7 +52,7 @@ class TagInfo extends React.Component {
   }
 
   render () {
-    const {tag} = this.props
+    const { tag } = this.props
     const btnStyle = this.state.extended
       ? this.state.detailsLoading
         ? 'warning' : 'primary' : 'default'

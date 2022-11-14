@@ -16,7 +16,7 @@ import { setSidebarOpen, setSidebarActiveTab } from '../../controls/sidebar/stor
 import warning from 'fbjs/lib/warning'
 
 import { defineMessages } from 'react-intl'
-var $ = require('jquery')
+const $ = require('jquery')
 
 export const messages = defineMessages({
   layerName: {
@@ -29,16 +29,16 @@ const FEATURE_CLICKED_PROPERTY_NAME = '_clicked'
 const FEATURE_HOVERED_PROPERTY_NAME = '_hovered'
 
 module.exports = function (context, options) {
-  var defaults = {
+  const defaults = {
     nameKey: 'layer-name-marinetraffic'
   }
   Object.assign(defaults, options)
 
-  var styleFunction = function (feature, resolution) {
-    let clicked = feature.get(FEATURE_CLICKED_PROPERTY_NAME)
-    let hovered = feature.get(FEATURE_HOVERED_PROPERTY_NAME)
-    let name = feature.get('SHIPNAME') || feature.get('MMSI')
-    let nameElement = new ol.style.Text({
+  const styleFunction = function (feature, resolution) {
+    const clicked = feature.get(FEATURE_CLICKED_PROPERTY_NAME)
+    const hovered = feature.get(FEATURE_HOVERED_PROPERTY_NAME)
+    const name = feature.get('SHIPNAME') || feature.get('MMSI')
+    const nameElement = new ol.style.Text({
       font: hovered ? 'bold 12px sans-serif' : '10px sans-serif',
       offsetY: 12,
       text: name,
@@ -46,7 +46,7 @@ module.exports = function (context, options) {
       textBaseline: 'top'
     })
 
-    let image = new ol.style.Circle({
+    const image = new ol.style.Circle({
       radius: 10,
       fill: new ol.style.Fill({
         color: 'rgba(16, 40, 68, 0.3)'
@@ -63,27 +63,27 @@ module.exports = function (context, options) {
     })
   }
 
-  let source = new ol.source.Vector({
+  const source = new ol.source.Vector({
     loader: function (extent, resolution, projection) {
-      var epsg4326Extent = ol.proj.transformExtent(extent, projection, 'EPSG:4326')
+      const epsg4326Extent = ol.proj.transformExtent(extent, projection, 'EPSG:4326')
 
-      let apikey = '7b58e3ad9855067acc7404a3199268d929af9287'
-      let minlat = epsg4326Extent[1]
-      let minlon = epsg4326Extent[0]
-      let maxlat = epsg4326Extent[3]
-      let maxlon = epsg4326Extent[2]
-      var url = 'http://services.marinetraffic.com/api/exportvessels/' +
+      const apikey = '7b58e3ad9855067acc7404a3199268d929af9287'
+      const minlat = epsg4326Extent[1]
+      const minlon = epsg4326Extent[0]
+      const maxlat = epsg4326Extent[3]
+      const maxlon = epsg4326Extent[2]
+      const url = 'http://services.marinetraffic.com/api/exportvessels/' +
         `${apikey}/` +
         `MINLAT:${minlat}/MAXLAT:${maxlat}/MINLON:${minlon}/MAXLON:${maxlon}/` +
         'protocol:jsono'
 
-      let corsUrl = '//whateverorigin.org/get?url=' + encodeURIComponent(url) + '&callback=?'
+      const corsUrl = '//whateverorigin.org/get?url=' + encodeURIComponent(url) + '&callback=?'
 
       $.ajax({
         url: corsUrl,
         dataType: 'json',
         success: function (data) {
-          let features = []
+          const features = []
           let results
 
           try {
@@ -99,12 +99,12 @@ module.exports = function (context, options) {
             return
           }
           results.forEach((res) => {
-            let featureProps = res
-            let labelCoords = ol.proj.fromLonLat([Number(res.LON), Number(res.LAT)])
+            const featureProps = res
+            const labelCoords = ol.proj.fromLonLat([Number(res.LON), Number(res.LAT)])
             featureProps.geometry = new ol.geom.Point(labelCoords)
 
-            let feature = new ol.Feature(featureProps)
-                    // feature.setStyle(styleFunction)
+            const feature = new ol.Feature(featureProps)
+            // feature.setStyle(styleFunction)
             feature.setId(res.MMSI)
             features.push(feature)
           })
@@ -131,14 +131,14 @@ module.exports = function (context, options) {
     context.dispatch(layerTileLoadStateChange(options.id, ev))
   })
 
-  let layer = new ol.layer.Vector({
-    source: source,
+  const layer = new ol.layer.Vector({
+    source,
     style: styleFunction,
     zIndex: orderIds.user_overlay
   })
 
   layer.on('selectFeature', function (e) {
-    let feature = e.feature
+    const feature = e.feature
     feature.set(FEATURE_CLICKED_PROPERTY_NAME, true)
     context.dispatch(featureClicked(feature.getProperties()))
     context.dispatch(setSidebarActiveTab(TabSidebarDetails.name))
@@ -149,15 +149,15 @@ module.exports = function (context, options) {
   })
 
   layer.on('hoverFeature', function (e) {
-    let feature = e.feature
+    const feature = e.feature
     feature.set(FEATURE_HOVERED_PROPERTY_NAME, true)
   })
   layer.on('unhoverFeature', function (e) {
     e.feature.set(FEATURE_HOVERED_PROPERTY_NAME, false)
   })
 
-  var objects = {
-    layer: layer,
+  const objects = {
+    layer,
     isInteractive: true,
     additionalSetup: (
       <div>

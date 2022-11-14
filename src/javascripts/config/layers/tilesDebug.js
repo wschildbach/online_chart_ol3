@@ -17,7 +17,7 @@ export const messages = defineMessages({
 })
 
 module.exports = function (context, options) {
-  var defaults = {
+  const defaults = {
     nameKey: 'layer-name-tileCoordinates',
     layer: new ol.layer.Tile({
       source: new ol.source.TileDebug({

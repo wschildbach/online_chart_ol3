@@ -21,8 +21,8 @@ export const messages = defineMessages({
 module.exports = function (context, options) {
   const ATTRIBUTION = '<a href="http://srtm.csi.cgiar.org/">SRTM</a>; ASTER GDEM is a product of <a href="http://www.meti.go.jp/english/press/data/20090626_03.html">METI</a> and <a href="https://lpdaac.usgs.gov/products/aster_policies">NASA</a>'
 
-  let sourceHillshade = new ol.source.XYZ({
-    attributions: [new ol.Attribution({html: ATTRIBUTION})],
+  const sourceHillshade = new ol.source.XYZ({
+    attributions: [new ol.Attribution({ html: ATTRIBUTION })],
     url: 'http://korona.geog.uni-heidelberg.de/tiles/asterh/?x={x}&y={y}&z={z}', // server does not support https :(
     maxZoom: 15,
     crossOrigin: 'Anonymous'
@@ -32,7 +32,7 @@ module.exports = function (context, options) {
     context.dispatch(layerTileLoadStateChange(options.id, ev))
   })
 
-  let sourceLines = new ol.source.XYZ({
+  const sourceLines = new ol.source.XYZ({
     url: 'http://korona.geog.uni-heidelberg.de/tiles/asterc/?x={x}&y={y}&z={z}', // server does not support https :(
     crossOrigin: 'Anonymous'
   })
@@ -41,7 +41,7 @@ module.exports = function (context, options) {
     context.dispatch(layerTileLoadStateChange(options.id, ev))
   })
 
-  var defaults = {
+  const defaults = {
     nameKey: 'layer-name-elevationProfile',
     layer: new ol.layer.Group({
       layers: [

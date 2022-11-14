@@ -37,8 +37,8 @@ class ConfigList extends React.Component {
   }
 
   selectBaseLayer (id) {
-    let currentBase = this.currentBaseLayerId()
-    if (id === currentBase) return  // do not deactivate the current base layer
+    const currentBase = this.currentBaseLayerId()
+    if (id === currentBase) return // do not deactivate the current base layer
     if (currentBase) {
       this.props.onChangeLayerVisible(currentBase, false)
     }
@@ -56,8 +56,8 @@ class ConfigList extends React.Component {
         </div>
         <ul className='layerList base'>
           {this.context.layers.map(layer => {
-            let loadState = this.props.layerLoadState[layer.id] || {loading: 0, loaded: 0}
-            let layerVisible = !!this.props.layerVisible[layer.id]
+            const loadState = this.props.layerLoadState[layer.id] || { loading: 0, loaded: 0 }
+            const layerVisible = !!this.props.layerVisible[layer.id]
             if (!layer.isBaseLayer) return
             return (
               <li key={'layer_' + layer.id}>
@@ -89,8 +89,8 @@ class ConfigList extends React.Component {
         </div>
         <ul className='layerList overlays'>
           {this.context.layers.map(layer => {
-            let loadState = this.props.layerLoadState[layer.id] || {loading: 0, loaded: 0}
-            let layerVisible = !!this.props.layerVisible[layer.id]
+            const loadState = this.props.layerLoadState[layer.id] || { loading: 0, loaded: 0 }
+            const layerVisible = !!this.props.layerVisible[layer.id]
             if (layer.isBaseLayer) return
             return (
               <li key={'layer_' + layer.id}>

@@ -12,14 +12,14 @@ import { FormattedMessage, FormattedRelative } from 'react-intl'
 import { DownloadLink } from '../../components/misc/Links'
 
 function humanFileSize (bytes, si) {
-  var thresh = si ? 1000 : 1024
+  const thresh = si ? 1000 : 1024
   if (Math.abs(bytes) < thresh) {
     return bytes + ' B'
   }
-  var units = si
-        ? ['kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
-        : ['KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB']
-  var u = -1
+  const units = si
+    ? ['kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
+    : ['KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB']
+  let u = -1
   do {
     bytes /= thresh
     ++u

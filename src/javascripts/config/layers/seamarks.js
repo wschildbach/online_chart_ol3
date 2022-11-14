@@ -19,7 +19,7 @@ export const messages = defineMessages({
 })
 
 module.exports = function (context, options) {
-  let source = new ol.source.OSM({
+  const source = new ol.source.OSM({
     url: '//t1.openseamap.org/seamark/{z}/{x}/{y}.png',
     crossOrigin: 'Anonymous'
   })
@@ -28,7 +28,7 @@ module.exports = function (context, options) {
     context.dispatch(layerTileLoadStateChange(options.id, ev))
   })
 
-  var defaults = {
+  const defaults = {
     nameKey: 'layer-name-seamarks',
     layer: new ol.layer.Tile({
       source,

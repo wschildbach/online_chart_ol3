@@ -45,7 +45,7 @@ const getLabelText = function (value, stepSize) {
 }
 
 module.exports = function (context, options) {
-  let gridLoader = function (extent, resolution, projection) {
+  const gridLoader = function (extent, resolution, projection) {
     this.clear()
     const epsg4326Extent = ol.proj.transformExtent(extent, projection, 'EPSG:4326')
 
@@ -75,12 +75,12 @@ module.exports = function (context, options) {
     const lonStart = Math.floor(lonMin / stepSize) * stepSize
     const lonEnd = Math.ceil(lonMax / stepSize) * stepSize
 
-    let lines = []
+    const lines = []
     for (let lon = lonStart; lon <= lonEnd; lon += stepSize) {
       const p1 = ol.proj.fromLonLat([lon, latMin])
       const p2 = ol.proj.fromLonLat([lon, latMax])
 
-      let feature = new ol.Feature({
+      const feature = new ol.Feature({
         geometry: new ol.geom.LineString([p1, p2]),
         labelPoint: new ol.geom.Point(p2),
         labelText: getLabelText(lon, stepSize),
@@ -95,7 +95,7 @@ module.exports = function (context, options) {
       const p1 = ol.proj.fromLonLat([lonMin, lat])
       const p2 = ol.proj.fromLonLat([lonMax, lat])
 
-      let feature = new ol.Feature({
+      const feature = new ol.Feature({
         geometry: new ol.geom.LineString([p1, p2]),
         labelPoint: new ol.geom.Point(p2),
         labelText: getLabelText(lat, stepSize),
@@ -106,15 +106,15 @@ module.exports = function (context, options) {
     this.addFeatures(lines)
   }
 
-  let source = new ol.source.Vector({
+  const source = new ol.source.Vector({
     loader: gridLoader,
     strategy: ol.loadingstrategy.bbox
   })
 
   // delete all cached lines on zoom change
   let oldZoom = context.getState().viewPosition.position.zoom
-  let storeChangeHandler = function () {
-    let state = context.getState()
+  const storeChangeHandler = function () {
+    const state = context.getState()
     if (!state.viewPosition.position) return
     if (oldZoom === state.viewPosition.position.zoom) return
     oldZoom = state.viewPosition.position.zoom
@@ -165,7 +165,7 @@ module.exports = function (context, options) {
     return [lineStrokeStyle, textStyle]
   }
 
-  var defaults = {
+  const defaults = {
     nameKey: 'layer-name-grid-wgs',
     layer: new ol.layer.Vector({
       source,

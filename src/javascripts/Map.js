@@ -33,9 +33,9 @@ class Ol3Map extends React.Component {
   }
 
   componentDidMount () {
-    let self = this
-    var layers = []
-    let interactiveLayers = []
+    const self = this
+    const layers = []
+    const interactiveLayers = []
 
     this.context.layers.forEach((layer) => {
       layer.layer.setVisible(!!(this.props.layerVisible[layer.id]))
@@ -46,7 +46,7 @@ class Ol3Map extends React.Component {
       }
     })
 
-    var interactions = ol.interaction.defaults({
+    const interactions = ol.interaction.defaults({
       altShiftDragRotate: false,
       pinchRotate: false
     })
@@ -63,14 +63,14 @@ class Ol3Map extends React.Component {
       condition: ol.events.condition.pointerMove,
       toggleCondition: ol.events.condition.never,
       style: (feature, resolution) => {
-        let featureStyleFunc = feature.getStyleFunction()
+        const featureStyleFunc = feature.getStyleFunction()
         if (featureStyleFunc) return featureStyleFunc(feature, resolution)
-        let featureStyle = feature.getStyle()
+        const featureStyle = feature.getStyle()
         if (featureStyle) return featureStyle
 
-        let layer = self.hoverer.getLayer(feature)
+        const layer = self.hoverer.getLayer(feature)
         if (!layer) return
-        let layerStyleFunc = layer.getStyleFunction()
+        const layerStyleFunc = layer.getStyleFunction()
         if (layerStyleFunc) return layerStyleFunc(feature, resolution)
         return layer.getStyle()
       }
@@ -93,7 +93,7 @@ class Ol3Map extends React.Component {
       })
     })
 
-    let featureLayerMapSelected = {}
+    const featureLayerMapSelected = {}
     this.selectFeature = (feature, layer) => {
       featureLayerMapSelected[feature.getId()] = layer
 
@@ -104,11 +104,11 @@ class Ol3Map extends React.Component {
       }
       layer.dispatchEvent(event)
 
-      let f = this.selector.getFeatures().remove(feature)
+      const f = this.selector.getFeatures().remove(feature)
       if (f) this.selector.getFeatures().push(f)
     }
     this.unselectFeature = (feature) => {
-      let layer = featureLayerMapSelected[feature.getId()]
+      const layer = featureLayerMapSelected[feature.getId()]
       if (!layer) return
       delete featureLayerMapSelected[feature.getId()]
 
@@ -127,13 +127,13 @@ class Ol3Map extends React.Component {
         self.unselectFeature(selectedFeature)
       })
       e.selected.forEach((selectedFeature) => {
-        let layer = this.getLayer(selectedFeature)
+        const layer = this.getLayer(selectedFeature)
         self.selectFeature(selectedFeature, layer)
       })
       return false
     })
 
-    let featureLayerMapHovered = {}
+    const featureLayerMapHovered = {}
     this.hoverFeature = (feature, layer) => {
       featureLayerMapHovered[feature.getId()] = layer
 
@@ -144,11 +144,11 @@ class Ol3Map extends React.Component {
       }
       layer.dispatchEvent(event)
 
-      let f = this.hoverer.getFeatures().remove(feature)
+      const f = this.hoverer.getFeatures().remove(feature)
       if (f) this.hoverer.getFeatures().push(f)
     }
     this.unhoverFeature = (feature) => {
-      let layer = featureLayerMapHovered[feature.getId()]
+      const layer = featureLayerMapHovered[feature.getId()]
       if (!layer) return
       delete featureLayerMapHovered[feature.getId()]
 
@@ -167,7 +167,7 @@ class Ol3Map extends React.Component {
         self.unhoverFeature(selectedFeature)
       })
       e.selected.forEach((selectedFeature) => {
-        let layer = this.getLayer(selectedFeature)
+        const layer = this.getLayer(selectedFeature)
         self.hoverFeature(selectedFeature, layer)
       })
       return false
@@ -180,8 +180,8 @@ class Ol3Map extends React.Component {
     }))
 
     this.ol3Map.on('moveend', () => {
-      var centre = ol.proj.transform(this.ol3Map.getView().getCenter(), 'EPSG:3857', 'EPSG:4326')
-      let position = {
+      const centre = ol.proj.transform(this.ol3Map.getView().getCenter(), 'EPSG:3857', 'EPSG:4326')
+      const position = {
         lon: centre[0],
         lat: centre[1],
         zoom: this.ol3Map.getView().getZoom()
@@ -201,14 +201,14 @@ class Ol3Map extends React.Component {
   componentWillReceiveProps (nextProps) {
     this.updateLayerVisible(nextProps)
 
-    var centre = ol.proj.transform(this.ol3Map.getView().getCenter(), 'EPSG:3857', 'EPSG:4326')
-    let position = {
+    let centre = ol.proj.transform(this.ol3Map.getView().getCenter(), 'EPSG:3857', 'EPSG:4326')
+    const position = {
       lon: centre[0],
       lat: centre[1],
       zoom: this.ol3Map.getView().getZoom()
     }
     if (nextProps.viewPosition.position && !positionsEqual(nextProps.viewPosition.position, position)) {
-      let view = this.ol3Map.getView()
+      const view = this.ol3Map.getView()
       view.animate({
         zoom: nextProps.viewPosition.position.zoom,
         center: ol.proj.fromLonLat([
@@ -220,10 +220,10 @@ class Ol3Map extends React.Component {
 
     if (nextProps.viewPosition.extent && nextProps.viewPosition.extent !== this.props.viewPosition.extent) {
       if (nextProps.viewPosition.extent && nextProps.viewPosition.extent.length === 4) {
-        let mapSize = this.ol3Map.getSize()
-        let width = mapSize[0]
-        let height = mapSize[1]
-        let options = {
+        const mapSize = this.ol3Map.getSize()
+        const width = mapSize[0]
+        const height = mapSize[1]
+        const options = {
           padding: [height / 4, width / 4, height / 4, width / 4],
           maxZoom: 18,
           duration: 1000
@@ -249,8 +249,8 @@ class Ol3Map extends React.Component {
   }
 
   updateLayerVisible (nextProps) {
-    let self = this
-    let requestedControlsIds = new Set(alwaysOnControls)
+    const self = this
+    const requestedControlsIds = new Set(alwaysOnControls)
     this.context.layers.forEach((layer) => {
       const layerVisibleNew = !!(nextProps.layerVisible[layer.id])
       const layerVisibleOld = layer.layer.getVisible()
@@ -272,15 +272,15 @@ class Ol3Map extends React.Component {
       }
     })
 
-    for (var [id, control] of this._controls) {
+    for (const [id, control] of this._controls) {
       const map = requestedControlsIds.has(id) ? this.ol3Map : null
       control.setMap(map)
     }
   }
 
   render () {
-    let names = new Set()
-    let additionalTabs = []
+    const names = new Set()
+    const additionalTabs = []
     this.context.layers.forEach(layer => {
       if (!this.props.layerVisible[layer.id]) return
       if (!layer.additionalTab) return

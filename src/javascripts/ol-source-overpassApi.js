@@ -3,23 +3,23 @@
 * @author aAXEe (https://github.com/aAXEe)
 */
 'use strict'
-var ol = require('openlayers')
-var $ = require('jquery')
+const ol = require('openlayers')
+const $ = require('jquery')
 
 module.exports = function (query) {
-  var vectorSource = new ol.source.Vector({
+  const vectorSource = new ol.source.Vector({
     format: new ol.format.OSMXML(),
     loader: function (extent, resolution, projection) {
-      var epsg4326Extent = ol.proj.transformExtent(extent, projection, 'EPSG:4326')
-      var baseUrl = '//overpass-api.de/api/interpreter?'
-      var queryComplete = 'data=' + encodeURIComponent(query) + '&bbox=' + epsg4326Extent.join(',')
-      var url = baseUrl + queryComplete
+      const epsg4326Extent = ol.proj.transformExtent(extent, projection, 'EPSG:4326')
+      const baseUrl = '//overpass-api.de/api/interpreter?'
+      const queryComplete = 'data=' + encodeURIComponent(query) + '&bbox=' + epsg4326Extent.join(',')
+      const url = baseUrl + queryComplete
 
       $.ajax({
         url,
         success: function (data) {
-          let format = this.getFormat()
-          let features = format.readFeatures(data, {featureProjection: projection})
+          const format = this.getFormat()
+          const features = format.readFeatures(data, { featureProjection: projection })
           this.addFeatures(features)
           this.dispatchEvent({ type: 'tileloadend', target: this })
         },

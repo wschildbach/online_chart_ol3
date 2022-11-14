@@ -42,9 +42,9 @@ function compressPosition (position, numDecimals = 4) {
 
 function compressVisibleLayers (visibleLayers) {
   let baseLayerCode = '_'
-  let arr = new Array(availibleOverlayLayers.length)
+  const arr = new Array(availibleOverlayLayers.length)
   arr.fill('-')
-  let ids = Object.keys(visibleLayers)
+  const ids = Object.keys(visibleLayers)
   ids.forEach(id => {
     const layerOverlay = _.find(availibleOverlayLayers, {
       id
@@ -64,19 +64,19 @@ function compressVisibleLayers (visibleLayers) {
 }
 
 function decompressVisibleLayers (layersString) {
-  let layers = {}
-  let allLayers = availibleBaseLayers.concat(availibleOverlayLayers)
+  const layers = {}
+  const allLayers = availibleBaseLayers.concat(availibleOverlayLayers)
   allLayers.forEach(layer => {
     layers[layer.id] = false
   })
 
-  let baseLayerString = layersString.substring(0, 1)
-  let overlayString = layersString.substring(1)
+  const baseLayerString = layersString.substring(0, 1)
+  const overlayString = layersString.substring(1)
 
   if (/^[BFT0]{5,}$/.test(layersString)) {
     /* e.g. layers=BFFFFTFFFTF0TFFFFTTTFT */
     console.warn('This layers format is depricated. Please update your url parameter to the new standart.')
-    let arr = layersString.split('') // convert to array
+    const arr = layersString.split('') // convert to array
     for (let i = 0; i < arr.length; i++) {
       const layer = _.find(allLayers, {
         urlIndex2013: i + 1
@@ -86,7 +86,7 @@ function decompressVisibleLayers (layersString) {
     return layers
   } else if (/^[01-]*$/.test(overlayString)) {
     /* e.g. layers=A010-10 */
-    let arr = overlayString.split('') // convert to array
+    const arr = overlayString.split('') // convert to array
     for (let i = 0; i < arr.length; i++) {
       const layer = _.find(availibleOverlayLayers, {
         urlIndex2016: i
@@ -94,7 +94,7 @@ function decompressVisibleLayers (layersString) {
       if (layer) layers[layer.id] = (arr[i] === '1')
     }
 
-    let baseLayer = _.find(availibleBaseLayers, {
+    const baseLayer = _.find(availibleBaseLayers, {
       urlIndex2016BaseLayer: baseLayerString
     })
     if (baseLayer) {
@@ -112,11 +112,11 @@ function decompressVisibleLayers (layersString) {
 let hashIsChangingFromSystem = false
 
 export const writeToUrlHash = store => next => action => {
-  let result = next(action)
-  let state = store.getState()
+  const result = next(action)
+  const state = store.getState()
   if (!state.viewPosition.position) return result // skip if view is not stable
 
-  let options = Object.assign({},
+  const options = Object.assign({},
     compressPosition(state.viewPosition.position),
     {
       layers: compressVisibleLayers(state.layerVisible)
@@ -147,7 +147,7 @@ export const writeToUrlHash = store => next => action => {
 export function getStateFromUrlHash (defaults) {
   if (window.location.hash === hashUrl) return defaults
 
-  let res = router.lookup(window.location.hash.substring(1))
+  const res = router.lookup(window.location.hash.substring(1))
 
   let pos = {}
   if (res.options.lon && res.options.lat && res.options.zoom) {
@@ -168,7 +168,7 @@ export function getStateFromUrlHash (defaults) {
       layerVisible: decompressVisibleLayers(res.options.layers)
     }
   }
-  let additions = {}
+  const additions = {}
 
   if (res.options.lang) {
     additions.locale = getExistingLocaleForCode(res.options.lang)
@@ -207,8 +207,8 @@ export function getStateFromUrlHash (defaults) {
 let store
 function onHashChange () {
   if (hashIsChangingFromSystem) return
-  let oldState = store.getState()
-  let newState = getStateFromUrlHash(oldState)
+  const oldState = store.getState()
+  const newState = getStateFromUrlHash(oldState)
 
   store.dispatch(setSidebarActiveTab(newState.sidebar.selectedTab))
 

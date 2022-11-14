@@ -13,9 +13,9 @@ import {FormGroup, FormControl, ControlLabel} from 'react-bootstrap'
 
 import { downloadSetFilter } from 'store/actions'
 
-export const DownloadFilterControl = ({features, setFilter, filter}) => {
-  let types = new Map([['- all -', '.*']])
-  for (let feature of features) {
+export const DownloadFilterControl = ({ features, setFilter, filter }) => {
+  const types = new Map([['- all -', '.*']])
+  for (const feature of features) {
     types.set(feature.format, '^' + feature.format + '$')
   }
   return (

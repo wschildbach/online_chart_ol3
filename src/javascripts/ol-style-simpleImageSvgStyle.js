@@ -3,7 +3,7 @@
 * @author aAXEe (https://github.com/aAXEe)
 */
 'use strict'
-var ol = require('openlayers')
+const ol = require('openlayers')
 
 module.exports = function (svg, maxWidth, maxHeight) {
   const img = document.createElement('IMG')

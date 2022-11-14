@@ -19,8 +19,8 @@ import { featureClicked, layerTileLoadStateChange } from '../../store/actions'
 import { setSidebarOpen, setSidebarActiveTab } from '../../controls/sidebar/store'
 
 import { defineMessages } from 'react-intl'
-var SimpleImageSvgStyle = require('ol-style-simpleImageSvgStyle')
-var OverpassApi = require('ol-source-overpassApi')
+const SimpleImageSvgStyle = require('ol-style-simpleImageSvgStyle')
+const OverpassApi = require('ol-source-overpassApi')
 
 export const messages = defineMessages({
   layerName: {
@@ -32,7 +32,7 @@ export const messages = defineMessages({
 const FEATURE_CLICKED_PROPERTY_NAME = '_clicked'
 
 module.exports = function (context, options) {
-  var defaults = {
+  const defaults = {
     nameKey: 'layer-name-scuba_diving',
     iconSize: 32
   }
@@ -46,11 +46,11 @@ module.exports = function (context, options) {
       dive_centre: new SimpleImageSvgStyle(DiveCentreSvg, defaults.iconSize, defaults.iconSize)
     }
   }
-  let tagBasedStyle = (feature) => {
-    for (var key in styles) {
-      var value = feature.get(key)
+  const tagBasedStyle = (feature) => {
+    for (const key in styles) {
+      const value = feature.get(key)
       if (value !== undefined) {
-        for (var regexp in styles[key]) {
+        for (const regexp in styles[key]) {
           if (new RegExp(regexp).test(value)) {
             return styles[key][regexp]
           }
@@ -59,10 +59,10 @@ module.exports = function (context, options) {
     }
   }
 
-  var styleFunction = function (feature, resolution) {
-    let clicked = feature.get(FEATURE_CLICKED_PROPERTY_NAME)
+  const styleFunction = function (feature, resolution) {
+    const clicked = feature.get(FEATURE_CLICKED_PROPERTY_NAME)
 
-    let baseStyle = tagBasedStyle(feature)
+    const baseStyle = tagBasedStyle(feature)
 
     if (clicked) {
       return [baseStyle, mapMarker]
@@ -71,19 +71,19 @@ module.exports = function (context, options) {
     return baseStyle
   }
 
-  let source = new OverpassApi('(node[sport=scuba_diving](bbox);node[amenity=dive_centre](bbox););out body qt;')
+  const source = new OverpassApi('(node[sport=scuba_diving](bbox);node[amenity=dive_centre](bbox););out body qt;')
   source.on(['tileloadstart', 'tileloadend', 'tileloaderror'], function (ev) {
     context.dispatch(layerTileLoadStateChange(options.id, ev))
   })
 
-  let layer = new ol.layer.Vector({
-    source: source,
+  const layer = new ol.layer.Vector({
+    source,
     style: styleFunction,
     zIndex: orderIds.user_overlay
   })
 
   layer.on('selectFeature', function (e) {
-    let feature = e.feature
+    const feature = e.feature
     feature.set(FEATURE_CLICKED_PROPERTY_NAME, true)
     context.dispatch(featureClicked(feature.getProperties()))
     context.dispatch(setSidebarActiveTab(TabSidebarDetails.name))
@@ -93,8 +93,8 @@ module.exports = function (context, options) {
     e.feature.set(FEATURE_CLICKED_PROPERTY_NAME, false)
   })
 
-  var objects = {
-    layer: layer,
+  const objects = {
+    layer,
 
     isInteractive: true,
 

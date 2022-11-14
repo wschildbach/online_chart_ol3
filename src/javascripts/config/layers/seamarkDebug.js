@@ -30,20 +30,20 @@ const FEATURE_CLICKED_PROPERTY_NAME = '_clicked'
 const FEATURE_HOVERED_PROPERTY_NAME = '_hovered'
 
 module.exports = function (context, options) {
-  var defaults = {
+  const defaults = {
     nameKey: 'layer-name-seamarks-debug'
   }
   Object.assign(defaults, options)
 
-  var styleFunction = function (feature, resolution) {
+  const styleFunction = function (feature, resolution) {
     if (!feature.get('seamark:type')) {
       return null // do not display such things
     }
-    let clicked = feature.get(FEATURE_CLICKED_PROPERTY_NAME)
-    let hovered = feature.get(FEATURE_HOVERED_PROPERTY_NAME)
+    const clicked = feature.get(FEATURE_CLICKED_PROPERTY_NAME)
+    const hovered = feature.get(FEATURE_HOVERED_PROPERTY_NAME)
 
-    let name = feature.get('seamark:name') || feature.get('name')
-    let nameElement = new ol.style.Text({
+    const name = feature.get('seamark:name') || feature.get('name')
+    const nameElement = new ol.style.Text({
       font: hovered ? 'bold 12px sans-serif' : '10px sans-serif',
       offsetY: 12,
       text: name,
@@ -51,7 +51,7 @@ module.exports = function (context, options) {
       textBaseline: 'top'
     })
 
-    let image = new ol.style.Circle({
+    const image = new ol.style.Circle({
       radius: 10,
       fill: new ol.style.Fill({
         color: 'rgba(16, 40, 68, 0.3)'
@@ -68,13 +68,13 @@ module.exports = function (context, options) {
     })
   }
 
-  let source = new OverpassApi('(node["seamark:type"](bbox););out body qt;')
+  const source = new OverpassApi('(node["seamark:type"](bbox););out body qt;')
   source.on(['tileloadstart', 'tileloadend', 'tileloaderror'], function (ev) {
     context.dispatch(layerTileLoadStateChange(options.id, ev))
   })
 
-  let layer = new ol.layer.Vector({
-    source: source,
+  const layer = new ol.layer.Vector({
+    source,
     style: function (feature, resolution) {
       return styleFunction(feature, resolution, 'normal')
     },
@@ -82,7 +82,7 @@ module.exports = function (context, options) {
   })
 
   layer.on('selectFeature', function (e) {
-    let feature = e.feature
+    const feature = e.feature
     feature.set(FEATURE_CLICKED_PROPERTY_NAME, true)
     context.dispatch(featureClicked(feature.getProperties()))
     context.dispatch(setSidebarActiveTab(TabSidebarDetails.name))
@@ -93,15 +93,15 @@ module.exports = function (context, options) {
   })
 
   layer.on('hoverFeature', function (e) {
-    let feature = e.feature
+    const feature = e.feature
     feature.set(FEATURE_HOVERED_PROPERTY_NAME, true)
   })
   layer.on('unhoverFeature', function (e) {
     e.feature.set(FEATURE_HOVERED_PROPERTY_NAME, false)
   })
 
-  var objects = {
-    layer: layer,
+  const objects = {
+    layer,
     isInteractive: true,
     additionalSetup: (
       <div>

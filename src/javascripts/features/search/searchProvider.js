@@ -11,7 +11,7 @@ import { connect } from 'react-redux'
 import { searchEnd } from 'store/actions'
 
 import {SEARCH_STATE_IDLE, SEARCH_STATE_ERROR, SEARCH_STATE_RUNNING, SEARCH_STATE_COMPLETE} from 'store/reducers'
-let $ = require('jquery')
+const $ = require('jquery')
 
 class SearchProviderComponent extends React.Component {
   constructor (props) {
@@ -26,7 +26,7 @@ class SearchProviderComponent extends React.Component {
   componentWillReceiveProps (nextProps) {
     if (nextProps.state !== SEARCH_STATE_RUNNING) return
 
-    let args = {
+    const args = {
       format: 'json',
       q: nextProps.query,
       polygon_geojson: '1',

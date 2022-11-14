@@ -11,12 +11,12 @@ import './MetaControl.scss'
 
 class MetaControl extends React.Component {
   getDomNode (id) {
-    var elm = document.getElementById(id)
+    const elm = document.getElementById(id)
     return elm || this._container
   }
 
   getControlsByPosition (position) {
-    var childControls = _.filter(this.props.children, function (c) {
+    const childControls = _.filter(this.props.children, function (c) {
       return c.props.position === position.toLowerCase()
     })
     return childControls.map(control => (

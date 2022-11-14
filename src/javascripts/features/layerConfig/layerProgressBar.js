@@ -5,7 +5,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-var CircleProgressBar = require('rc-progress').Circle
+const CircleProgressBar = require('rc-progress').Circle
 const progressScale = 100
 
 const LayerProgressBar = ({ loadState, enabled }) => {
@@ -20,7 +20,7 @@ const LayerProgressBar = ({ loadState, enabled }) => {
     float: 'right',
     marginTop: '3px'
   }
-  let colors = {
+  const colors = {
     active: '#3FC7FA',
     inactive: '#c9c9c9',
     success: '#85D262',

@@ -21,7 +21,7 @@ export const messages = defineMessages({
 })
 
 module.exports = function (context, options) {
-  let source = new ol.source.TileWMS({
+  const source = new ol.source.TileWMS({
     attributions: [
       new ol.Attribution({
         html: 'Depth data Germany/MV © ' +
@@ -40,7 +40,7 @@ module.exports = function (context, options) {
     context.dispatch(layerTileLoadStateChange(options.id, ev))
   })
 
-  var defaults = {
+  const defaults = {
     nameKey: 'layer-name-depth-geodaten_mv',
     layer: new ol.layer.Tile({
       source,

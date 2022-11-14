@@ -4,7 +4,7 @@
 */
 'use strict'
 import Marker from './mapMarker.svg'
-var ol = require('openlayers')
+const ol = require('openlayers')
 
 const maxWidth = 48
 const maxHeight = 48

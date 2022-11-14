@@ -52,7 +52,7 @@ export const DownloadTab = {
 }
 
 export default function (context, options) {
-  var defaults = {
+  const defaults = {
     nameKey: 'layer-name-download_bundles'
   }
   Object.assign(defaults, options)
@@ -84,8 +84,8 @@ export default function (context, options) {
 
     const clicked = feature.get(FEATURE_CLICKED_PROPERTY_NAME)
     const hovered = feature.get(FEATURE_HOVERED_PROPERTY_NAME)
-    let name = feature.get('name:en')
-    let nameElement = new ol.style.Text({
+    const name = feature.get('name:en')
+    const nameElement = new ol.style.Text({
       font: hovered ? 'bold 14px sans-serif' : '14px sans-serif',
       text: name,
       textAlign: 'center',
@@ -101,7 +101,7 @@ export default function (context, options) {
     })
   }
 
-  let source = new ol.source.Vector({
+  const source = new ol.source.Vector({
     url: 'https://t1.openseamap.org/bundles/overview.geojson',
     format: new ol.format.GeoJSON(),
     strategy: ol.loadingstrategy.all,
@@ -112,9 +112,9 @@ export default function (context, options) {
         success: function (data) {
           const clickedId = context.getState().downloadBundles.clickedFeatureId
           const hoveredId = context.getState().downloadBundles.hoveredFeatureId
-          let format = this.getFormat()
-          let features = format.readFeatures(data, {featureProjection: projection})
-          for (let f of features) {
+          const format = this.getFormat()
+          const features = format.readFeatures(data, { featureProjection: projection })
+          for (const f of features) {
             const id = hashCode(f.get('url') + f.get('date') + f.get('filesize'))
             f.setId(id)
             if (f.getId() === clickedId) {
@@ -141,7 +141,7 @@ export default function (context, options) {
     }
   })
   const filterFeatures = (filter) => {
-    let features = source.getFeatures()
+    const features = source.getFeatures()
     features.forEach(feature => {
       const isActive = downloadFeatureMatchesFilter(feature.getProperties(), filter)
       feature.set(FEATURE_FILTERED_OUT_PROPERTY_NAME, !isActive)
@@ -152,7 +152,7 @@ export default function (context, options) {
     if (ev.type === 'tileloadend') {
       filterFeatures(context.getState().downloadBundles.filter)
 
-      let featuresCompressed = []
+      const featuresCompressed = []
       for (const f of source.getFeatures()) {
         featuresCompressed.push(Object.assign({_id: f.getId()}, _.omit(f.getProperties(), 'geometry')))
       }
@@ -160,8 +160,8 @@ export default function (context, options) {
     }
   })
 
-  let layer = new ol.layer.Vector({
-    source: source,
+  const layer = new ol.layer.Vector({
+    source,
     style: styleFunction,
     updateWhileAnimating: true,
     updateWhileInteracting: true,
@@ -172,7 +172,7 @@ export default function (context, options) {
   })
 
   layer.on('selectFeature', function (e) {
-    let feature = e.feature
+    const feature = e.feature
     context.dispatch(downloadClicked(feature.getId()))
     context.dispatch(setSidebarActiveTab(DownloadTab.name))
     context.dispatch(setSidebarOpen(true))
@@ -181,31 +181,31 @@ export default function (context, options) {
     context.dispatch(downloadUnclick())
   })
   layer.on('hoverFeature', function (e) {
-    let feature = e.feature
+    const feature = e.feature
     context.dispatch(downloadHovered(feature.getId()))
   })
   layer.on('unhoverFeature', function (e) {
     context.dispatch(downloadUnhover())
   })
 
-  let updateMapPosition = function (feature) {
+  const updateMapPosition = function (feature) {
     context.dispatch(setViewPosition(undefined, feature.getGeometry().getExtent()))
   }
 
   let oldClickState = context.getState().downloadBundles.clickedFeatureId
-  let clickHandler = function () {
-    let state = context.getState()
+  const clickHandler = function () {
+    const state = context.getState()
     if (oldClickState === state.downloadBundles.clickedFeatureId) return
     oldClickState = state.downloadBundles.clickedFeatureId
 
-    let features = source.getFeatures()
+    const features = source.getFeatures()
     features.forEach(feature => {
       feature.set(FEATURE_CLICKED_PROPERTY_NAME, false)
     })
 
     if (!state.downloadBundles.clickedFeatureId) return
 
-    let clickedFeature = source.getFeatureById(state.downloadBundles.clickedFeatureId)
+    const clickedFeature = source.getFeatureById(state.downloadBundles.clickedFeatureId)
     if (!clickedFeature) return
 
     clickedFeature.set(FEATURE_CLICKED_PROPERTY_NAME, true)
@@ -213,40 +213,40 @@ export default function (context, options) {
   }
 
   let oldHoverState = context.getState().downloadBundles.hoveredFeatureId
-  let hoverHandler = function () {
-    let state = context.getState()
+  const hoverHandler = function () {
+    const state = context.getState()
     if (oldHoverState === state.downloadBundles.hoveredFeatureId) return
     oldHoverState = state.downloadBundles.hoveredFeatureId
 
-    let features = source.getFeatures()
+    const features = source.getFeatures()
     features.forEach(feature => {
       feature.set(FEATURE_HOVERED_PROPERTY_NAME, false)
     })
 
     if (!state.downloadBundles.hoveredFeatureId) return
 
-    let hoveredFeature = source.getFeatureById(state.downloadBundles.hoveredFeatureId)
+    const hoveredFeature = source.getFeatureById(state.downloadBundles.hoveredFeatureId)
     if (!hoveredFeature) return
     hoveredFeature.set(FEATURE_HOVERED_PROPERTY_NAME, true)
   }
 
   let oldFilterState = context.getState().downloadBundles.filter
   const filterHandler = function () {
-    let state = context.getState()
+    const state = context.getState()
     if (oldFilterState === state.downloadBundles.filter) return
     oldFilterState = state.downloadBundles.filter
     filterFeatures(state.downloadBundles.filter)
   }
 
-  let storeChangeHandler = function () {
+  const storeChangeHandler = function () {
     hoverHandler()
     clickHandler()
     filterHandler()
   }
   context.subscribe(storeChangeHandler)
 
-  var objects = {
-    layer: layer,
+  const objects = {
+    layer,
     isInteractive: true,
     additionalSetup: (
       <div>

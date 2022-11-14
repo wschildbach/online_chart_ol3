@@ -19,7 +19,7 @@ export const messages = defineMessages({
 })
 
 module.exports = function (context, options) {
-  let source = new ol.source.TileWMS({
+  const source = new ol.source.TileWMS({
     url: 'http://osm.franken.de:8080/geoserver/gwc/service/wms', // server does not support https :(
     params: { LAYERS: 'gebco_2014', VERSION: '1.1.1' }
   })
@@ -28,7 +28,7 @@ module.exports = function (context, options) {
     context.dispatch(layerTileLoadStateChange(options.id, ev))
   })
 
-  var defaults = {
+  const defaults = {
     nameKey: 'layer-name-marineProfile',
     layer: new ol.layer.Tile({
       source,

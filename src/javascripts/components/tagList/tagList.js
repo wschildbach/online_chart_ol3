@@ -13,7 +13,7 @@ import { FormattedMessage } from 'react-intl'
 
 import './tagList.scss'
 
-const TagList = ({tags}) => (
+const TagList = ({ tags }) => (
   <div className='tagList'>
     <h2>
       <FormattedMessage id='heading.tags' defaultMessage='Tags' />

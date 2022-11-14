@@ -35,8 +35,8 @@ import { writeToUrlHash } from './urlHashHandling'
 
 function layerVisible (state = {}, action) {
   switch (action.type) {
-    case SET_LAYER_VISIBLE:
-      var vis = {}
+    case SET_LAYER_VISIBLE: {
+      const vis = {}
       vis[action.id] = action.visible
       return Object.assign({}, state, vis)
 
@@ -75,7 +75,7 @@ function selectedFeature (state = {
 function layerTileLoadState (state = {}, action) {
   switch (action.type) {
     case LAYER_TILE_LOAD_CHANGE: {
-      let count = state[action.id]
+      const count = state[action.id]
 
       if (action.changeType === 'imageloadstart' || action.changeType === 'tileloadstart') {
         count.loading++
@@ -92,21 +92,21 @@ function layerTileLoadState (state = {}, action) {
         count.loaded = 0
       }
 
-      let obj = {}
+      const obj = {}
       obj[action.id] = count
       return Object.assign({}, state, obj)
     }
 
     case SET_LAYER_VISIBLE: {
-      let count = state[action.id]
+      const count = state[action.id]
       count.lastError = ''
-      let obj = {}
+      const obj = {}
       obj[action.id] = count
       return Object.assign({}, state, obj)
     }
 
     case INIT_LAYER_VISIBLE: {
-      let obj = {}
+      const obj = {}
       Object.keys(action.list).forEach(id => {
         obj[id] = {
           lastError: '',
@@ -144,7 +144,7 @@ export const searchDefaultState = {
 function search (state = searchDefaultState, action) {
   switch (action.type) {
     case SEARCH_START: {
-      let obj = {
+      const obj = {
         state: SEARCH_STATE_RUNNING,
         query: action.query
       }
@@ -154,7 +154,7 @@ function search (state = searchDefaultState, action) {
       return searchDefaultState
 
     case SEARCH_END: {
-      let obj = {}
+      const obj = {}
       if (action.success) {
         obj.state = SEARCH_STATE_COMPLETE
       } else {
@@ -164,13 +164,13 @@ function search (state = searchDefaultState, action) {
       return Object.assign({}, state, obj)
     }
     case SEARCH_RESULT_HOVERED: {
-      let obj = {
+      const obj = {
         hoveredFeatureId: action.featureId
       }
       return Object.assign({}, state, obj)
     }
     case SEARCH_RESULT_CLICKED: {
-      let obj = {
+      const obj = {
         clickedFeatureId: action.featureId
       }
       return Object.assign({}, state, obj)
@@ -195,13 +195,13 @@ const downloadBundles = (state = downloadDefaultState, action) => {
       return Object.assign({}, state, {filter: action.filter})
     }
     case DOWNLOAD_HOVERED: {
-      let obj = {
+      const obj = {
         hoveredFeatureId: action.featureId
       }
       return Object.assign({}, state, obj)
     }
     case DOWNLOAD_CLICKED: {
-      let obj = {
+      const obj = {
         clickedFeatureId: action.featureId
       }
       return Object.assign({}, state, obj)

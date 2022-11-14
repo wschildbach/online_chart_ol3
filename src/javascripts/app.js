@@ -27,12 +27,12 @@ import deLocaleData from 'react-intl/locale-data/de'
 addLocaleData(enLocaleData)
 addLocaleData(deLocaleData)
 
-let hashState = getStateFromUrlHash({
+const hashState = getStateFromUrlHash({
   viewPosition: defaultViewPosition
 })
-let store = configureStore(hashState)
+const store = configureStore(hashState)
 
-let layers = createLayers(store)
+const layers = createLayers(store)
 
 let defaultVisibleList = {}
 if (hashState.layerVisible) { // use layer state from url if provided

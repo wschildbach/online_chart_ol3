@@ -21,7 +21,7 @@ const ResultList = ({
   clickedId,
   features
 }) => {
-  var activeFeature = features.find(feature => feature._id === clickedId)
+  const activeFeature = features.find(feature => feature._id === clickedId)
   if (!activeFeature) return (<div />)
   return (
     <DownloadDisplay
@@ -39,7 +39,7 @@ ResultList.propTypes = {
 }
 
 const mapStateToProps = (state) => {
-  let filteredFeatures = []
+  const filteredFeatures = []
   for (const f of state.downloadBundles.features) {
     if (!downloadFeatureMatchesFilter(f, state.downloadBundles.filter)) continue
     filteredFeatures.push(f)

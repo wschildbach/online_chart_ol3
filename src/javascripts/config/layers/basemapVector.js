@@ -82,8 +82,8 @@ LayerConfig.propTypes = {
 }
 
 module.exports = function (context, options) {
-  var KEY = 'vector-tiles-DdrLAFD'
-  var ATTRIBUTION = 'Vector tiles by <a href="https://mapzen.com/">Mapzen</a>; ' +
+  const KEY = 'vector-tiles-DdrLAFD'
+  const ATTRIBUTION = 'Vector tiles by <a href="https://mapzen.com/">Mapzen</a>; ' +
         'Map data © ' +
   '<a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, ' +
   '<a href="http://whosonfirst.mapzen.com">Who’s On First</a> (<a href="http://whosonfirst.mapzen.com#License">License</a>), ' +
@@ -216,26 +216,26 @@ module.exports = function (context, options) {
   let mapMode = 'day'
   function styleFunc (feature, resolution) {
     const z = baseGrid.getZForResolution(resolution)
-    var featureLayer = feature.get('layer')
-    var featureKind = feature.get('kind')
-    var featureGeom = feature.getGeometry().getType()
+    const featureLayer = feature.get('layer')
+    const featureKind = feature.get('kind')
+    const featureGeom = feature.getGeometry().getType()
     const minZ = feature.get('min_zoom')
     if (minZ && minZ > z) return
     // console.log('=============>>> feature', ol.getUid(feature), feature, resolution, featureGeom)
 
-    for (let styleMode in staticStyles) {
+    for (const styleMode in staticStyles) {
       if (mapMode !== styleMode) continue
-      let stylesLayer = staticStyles[styleMode]
-      for (let layer in stylesLayer) {
+      const stylesLayer = staticStyles[styleMode]
+      for (const layer in stylesLayer) {
         if (layer !== featureLayer) continue
         if (!showBuildings && layer === 'buildings') continue
-        let stylesKind = stylesLayer[layer]
+        const stylesKind = stylesLayer[layer]
 
-        for (var kind in stylesKind) {
+        for (const kind in stylesKind) {
           if (!new RegExp(kind).test(featureKind)) continue
-          let stylesType = stylesKind[kind]
+          const stylesType = stylesKind[kind]
 
-          for (let geomType in stylesType) {
+          for (const geomType in stylesType) {
             if (featureGeom === 'Polygon' && geomType !== 'polygons') continue
             if (featureGeom === 'MultiPolygon' && geomType !== 'polygons') continue
 
@@ -303,7 +303,7 @@ module.exports = function (context, options) {
 
   // return the url to be fetched to get the data inside the resoultion area
   function mapExtentToTile (extent, resoltuion) {
-    let coords = []
+    const coords = []
     labelGrid.forEachTileCoord(extent, labelGrid.getZForResolution(resoltuion), (coord) => {
       coords.push(coord)
     })
@@ -311,7 +311,7 @@ module.exports = function (context, options) {
     return tileUrlFunction(coord)
   }
 
-  let sourceLabels = new ol.source.Vector({
+  const sourceLabels = new ol.source.Vector({
     format: new ol.format.GeoJSON(),
     url: mapExtentToTile,
     strategy: ol.loadingstrategy.tile(labelGrid)
@@ -427,8 +427,8 @@ module.exports = function (context, options) {
   })
 
   let oldZ = context.getState().viewPosition.position.zoom
-  let storeHandler = function () {
-    let state = context.getState()
+  const storeHandler = function () {
+    const state = context.getState()
     if (state.viewPosition.position && state.viewPosition.position.zoom !== oldZ) {
       oldZ = state.viewPosition.position.zoom
       sourceLabels.clear()
@@ -441,7 +441,7 @@ module.exports = function (context, options) {
   }
   context.subscribe(storeHandler)
 
-  var defaults = {
+  const defaults = {
     nameKey: 'layer-name-base-vector',
     layer: new ol.layer.Group({
       layers: [
