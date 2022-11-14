@@ -23,7 +23,7 @@ class SearchProviderComponent extends React.Component {
     this.componentWillReceiveProps(props)
   }
 
-  componentWillReceiveProps (nextProps) {
+  UNSAFE_componentWillReceiveProps (nextProps) {
     if (nextProps.state !== SEARCH_STATE_RUNNING) return
 
     const args = {

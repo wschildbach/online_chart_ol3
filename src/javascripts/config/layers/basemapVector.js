@@ -36,7 +36,7 @@ class LayerConfig extends React.Component {
     this.handleToggleNight = this.handleToggleNight.bind(this)
   }
 
-  componentWillReceiveProps (nextProps) {
+  UNSAFE_componentWillReceiveProps (nextProps) {
     this.props.setShowBuildings(this.state.showBuildings)
     this.props.setUseNightMode(this.state.useNightMode)
   }

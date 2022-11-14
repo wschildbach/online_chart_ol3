@@ -198,7 +198,7 @@ class Ol3Map extends React.Component {
     this.updateLayerVisible(this.props)
   }
 
-  componentWillReceiveProps (nextProps) {
+  UNSAFE_componentWillReceiveProps (nextProps) {
     this.updateLayerVisible(nextProps)
 
     let centre = ol.proj.transform(this.ol3Map.getView().getCenter(), 'EPSG:3857', 'EPSG:4326')

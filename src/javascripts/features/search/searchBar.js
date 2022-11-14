@@ -34,7 +34,7 @@ class SearchBarComponent extends React.Component {
     this.getValidationState = this.getValidationState.bind(this)
   }
 
-  componentWillReceiveProps (nextProps) {
+  UNSAFE_componentWillReceiveProps (nextProps) {
     this.setState({ value: nextProps.query })
   }
 
